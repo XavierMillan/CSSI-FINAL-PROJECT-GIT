@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Forum</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="auth.css">
+<!--     <link rel="stylesheet" href="styles.css"> -->
+
+<!--   <style>
+    header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: transparent;
+  position: fixed;
+  z-index: 9999;
+}
+    .nav__links a,
+.overlay__content a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.cta{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+  float: right;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links li {
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: color 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+/*   color: #0088a9; */
+   color: #000000;
+}
+
+.cta {
+  padding: 9px 25px;
+/*   background-color: rgba(0, 136, 169, 1); */
+  background-color: black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease 0s;
+}
+
+.cta:hover {
+/*   background-color: rgba(0, 136, 169, 0.8); */
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+  </style> -->
+</head>
+
+<!--   <header >
+    <a class="logo" href="/" ><img src="96430 (1).png" alt="logo" ></a>
+
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Games</a></li>
+          <li><a href="forum.html">Forum</a></li>
+        </ul>
+            </nav>
+            <a class="cta" href="login.html">Login</a>
+            <p class="menu cta">Menu</p> -->
+<!--   </header> -->
+    
+
+<body>
+<!--     <header class="site-navbar" role="banner">
+  <div class="container">
+  <div class="row align-items-center">
+  <div class="col-11 col-xl-2">
+  <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0" style="color: black !important;">Brand</a></h1>
+  </div>
+  <div class="col-12 col-md-10 d-none d-xl-block">
+  <nav class="site-navigation position-relative text-right" role="navigation">
+  <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+  <li ><a href="index.html"><span style="color: black !important;" >Home</span></a></li>
+  <li class="has-children">
+  <a href="about.html"><span style="color: black !important;">Dropdown</span></a>
+  <ul class="dropdown arrow-top">
+    <li><a href="#">Menu One</a></li>
+    <li><a href="#">Menu Two</a></li>
+    <li><a href="#">Menu Three</a></li>
+  <li class="has-children">
+    <a href="#">Dropdown</a>
+    <ul class="dropdown">
+    <li><a href="#">Menu One</a></li>
+    <li><a href="#">Menu Two</a></li>
+    <li><a href="#">Menu Three</a></li>
+    <li><a href="#">Menu Four</a></li>
+  </ul>
+  </li>
+  </ul>
+  </li>
+<li><a href="listings.html"><span style="color: black !important;">Listings</span></a></li>
+<li><a href="about.html"><span style="color: black !important;">About</span></a></li>
+<li class="active"><a href="forum.html"><span style="color: black !important;">Forum</span></a></li>
+<li ><a href="login.html"><span style="color: black !important;">Login</span></a></li>
+</ul>
+</nav>
+</div>
+<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white active"><span class="icon-menu h3"></span></a></div>
+</div>
+</div>
+
+</header> -->
+
+    <br>
+    <br>
+    <br>
+  <section>
+    <div class="containerAuth" id="container">
+    <div class="form-container sign-up-container" id="sign-up-view">
+        <div class="form">
+            <h1>Create Account</h1>
+            <br>
+            <span class="message"></span>
+            <input id="nameSU" type="text" placeholder="Name" />
+            <input id="emailSU" type="email" placeholder="Email" />
+            <input id="passSU" type="password" placeholder="Password" />
+            <br>
+            <button class="ghost gblack" id="signupbutton">Sign Up</button>
+<!--             <h6>or</h6>
+            <button  id="googlesignupbutton">Sign Up With Google</button> -->
+        </div>
+    </div>
+    <div class="form-container sign-in-container" id="sign-in-view">
+        <div class="form">
+            <h1>Sign in</h1>
+            <br>
+            <span class="message"></span>
+                <input type="text" id="email" name="username" placeholder="Email">
+                <input type="password" id="pass" name="password" placeholder="Password">
+            <br>
+            <button  class ="link" id="forgotpassword">Forgot your password?</button>
+            <button style="display: none" id="resetpassword">Reset Password</button>
+            <br>
+            <button class="ghost gblack" id="signinbutton">Sign In</button>
+<!--             <h6 id="orSI">or</h6>
+            <button  id="googlesigninbutton">Sign In With Google</button> -->
+<!--            <button  id="linksignin">Send Link</button>-->
+
+        </div>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Already have an account?</h1>
+                <p>Please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Need an account?</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+  </section>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+  
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+
+        if(user) {
+                //"loggedin.html";
+          console.log("logged in");
+                window.location.href = "loggedin.html";
+
+        }
+
+    });
+
+    //if url has the parameter signup=true, then show the sign up view
+    //get url
+    var url = new URL(window.location.href);
+    var signup = url.searchParams.get("signup");
+    if(signup == "true") {
+        console.log("signup true");
+        // setMessage("");
+        document.getElementById("sign-in-view").style.display = "none";
+        document.getElementById("sign-up-view").style.display = "block";
+        containerAuth.classList.add("right-panel-active");
+    }
+    //if url has the parameter signin=true, then show the sign in view
+    var signin = url.searchParams.get("signin");
+    if(signin == "true") {
+        console.log("signin true");
+        // setMessage("");
+        document.getElementById("sign-up-view").style.display = "none";
+        document.getElementById("sign-in-view").style.display = "block";
+        containerAuth.classList.add("left-panel-active");
+    }
+</script>
+  <script src="auth.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

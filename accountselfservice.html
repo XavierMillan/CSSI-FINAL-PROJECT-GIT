@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self Service Portal</title>
+</head>
+<body>
+
+<link rel="stylesheet" href="auth.css">
+
+
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container" id="sign-in-view">
+        <div class="form">
+            <h1 id="serviceMode">Service Mode</h1>
+<!--            <div class="social-container">-->
+<!--            </div>-->
+            <h3 id="message"></h3>
+            <div id="resetService" style="display: none">
+            <input type="password" id="pass" name="password" placeholder="New Password">
+            <br>
+            <button id="resetnewpassword">Reset Password</button>
+            </div>
+            <div id="recoverEmail" style="display: none">
+                <p> If your account was compromised reset your password</p>
+                <button id="recoverPassword">Reset password</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Name</h1>
+                <p>Account Self Service</p>
+                <button class="ghost" id="signIn" onclick="goToSignIn()">Go To Sign In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+  
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script >
+  // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+
+    function goToSignIn() {
+      console.log("go to sign in");
+        window.location.href = "login.html";
+    }
+
+   //add event listner to got to sign in
+    
+    //get mode paramater from url
+    var url = new URL(window.location.href);
+    var mode = url.searchParams.get("mode");
+    var actionCode = url.searchParams.get("oobCode");
+    console.log(actionCode);
+    //reset password
+    //verifyEmail
+    if(mode=="verifyEmail"){
+        //set serviceMode innerHTML to Verify Email
+        document.getElementById("serviceMode").innerHTML = "Verify Email";
+        //apply actionCode
+
+        firebase.auth().applyActionCode(actionCode).then(function(result) {
+            // User has been verified.
+            console.log(result);
+            document.getElementById("message").innerHTML = "Email Verified";
+        }).catch(function(error) {
+            // Handle error
+            console.log(error);
+            document.getElementById("message").innerHTML = "Error";
+        });
+      console.log("done");
+
+        // firebase.auth().verifyEmail(actionCode).then(function() {
+        //     // Email address has been verified.
+        //     document.getElementById("message").innerHTML = "Email address has been verified.";
+        // }).catch(function(error) {
+        //     // Error occurred.
+        //     document.getElementById("message").innerHTML = error.message;
+        // });
+    }
+
+
+    if(mode=="resetPassword"){
+        //set serviceMode innerHTML to Reset Password
+        document.getElementById("serviceMode").innerHTML = "Reset Password";
+        //set resetService to display block
+
+    firebase.auth().verifyPasswordResetCode(actionCode)
+        .then(function(email) {
+            document.getElementById("resetService").style.display = "block";
+                document.getElementById("message").innerHTML = email;
+            document.getElementById("resetnewpassword").addEventListener("click", function () {
+                var password = document.getElementById("pass").value;
+                firebase.auth().confirmPasswordReset(actionCode, password).then(function (user) {
+                    // User signed in successfully.
+                    console.log("Password reset successfully");
+                    document.getElementById("message").innerHTML = "Password reset successfully";
+                    document.getElementById("resetService").style.display = "none";
+
+                    // alert("Password reset successfully");
+                    // window.location.href = "index.html";
+                }).catch(function (error) {
+                    // User couldn't sign in (bad verification code?)
+                    console.log("Error resetting password");
+                    document.getElementById("message").innerHTML = "Error resetting password";
+                })
+            })
+        })
+                .catch(function () {
+                    document.getElementById("resetService").style.display = "none";
+                    // Invalid code
+                    document.getElementById("resetnewpassword").disabled = true;
+                    //set message to invalid code
+                    document.getElementById("message").innerHTML = "Invalid Code";
+                    // alert("Invalid Code");
+                }
+        );
+    }
+
+
+
+    if(mode=="recoverEmail"){
+        document.getElementById("serviceMode").innerHTML = "Recover Email";
+
+        let restoredEmail = null;
+        // Confirm the action code is valid.
+        // firebase.auth().checkActionCode(auth, actionCode).then((info) => {
+        firebase.auth().checkActionCode(actionCode).then((info) => {
+            // Get the restored email address.
+            restoredEmail = info['data']['email'];
+            console.log(restoredEmail);
+
+        firebase.auth().applyActionCode(actionCode).then(function(result) {
+            // Account email reverted to restoredEmail
+            console.log("Email reverted to " + restoredEmail);
+            document.getElementById("message").innerHTML = "Email reverted to " + restoredEmail;
+
+            document.getElementById("recoverEmail").style.display = "block";
+            document.getElementById("recoverPassword").addEventListener("click", function () {
+                firebase.auth().sendPasswordResetEmail(restoredEmail).then(() => {
+                    //set message to email sent
+                    document.getElementById("message").innerHTML = "Password Reset Email Sent";
+                    //hide recoverEmail
+                    document.getElementById("recoverEmail").style.display = "none";
+                    // Password reset confirmation sent. Ask user to check their email.
+                }).catch((error) => {
+                    // Error encountered while sending password reset code.
+                    document.getElementById("message").innerHTML = error.message;
+                    console.log(error.message);
+                });
+            });
+            }).catch(function(error) {
+                // Handle error
+                console.log(error);
+                document.getElementById("message").innerHTML = error.message;
+            });
+
+    }).catch(function(error) {
+            // Handle error
+            console.log(error);
+            document.getElementById("message").innerHTML = error.message;
+        });
+    }
+
+</script>
+</html>

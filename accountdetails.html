@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<!--<div class="container" id="container" style="min-height: 90%">-->
+<div id="page" style="display: none">
+    <div class="form-container sign-in-container" id="sign-in-view">
+        <div class="form">
+            <h1>Change Account Details</h1>
+            <large id="message"></large>
+
+            <br>
+            <large>Change Name</large>
+            <small id="currentname">---</small>
+            <input type="name" id="name" name="name" placeholder="New Name">
+            <button  id="changeName" >Change Name</button>
+
+<!--            <large>Profile Picture</large>-->
+<!--            <img id="profilepic" src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="width:100px; border-radius: 50%">-->
+<!--            <input type="file" id="profilepicupload" name="profilepic" placeholder="New Profile Picture">-->
+<!--            <button id="changeProfilePic" >Change Profile Picture</button>-->
+
+            <br>
+            <large>Change Email</large>
+            <small id="currentemail">---</small>
+            <input type="email" id="email" name="email" placeholder="New Email">
+            <button id="changeEmail" >Change Email</button>
+
+            <br>
+            <large id="currentpassword">Password</large>
+            <input type="password" id="oldpassword" name="password" placeholder="Old Password">
+            <input type="password" id="newpassword1" name="password" placeholder="New Password">
+            <input type="password" id="newpassword2" name="password" placeholder="Confirm Password">
+            <button id="changePassword" >Change Password</button>
+
+            <br>
+            <large>Delete Account</large>
+            <br>
+            <button id="deleteAccount" >Delete Account</button>
+
+        </div>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Venge</h1>
+                <p>Account Details</p>
+                <button class="ghost" id="authHome" onclick="goToLoggedIn()">Auth Home</button>
+                <br>
+                <button class="ghost" id="signOut" onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<div class="modal fade" id="reauthModal" tabindex="-1" role="dialog" aria-labelledby="reauthModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reauthModalLabel">Please re-authenticate</h5>
+                <h6 id="modalMessage"></h6>
+                <small id="emailHelp" class="form-text text-muted">You need to reauthenticate to access secure settings</small>
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+<!--                    <label for="exampleInputEmail1">Email address</label>-->
+                    <input type="email" class="form-control" id="emailre" aria-describedby="emailHelp" placeholder="Enter email">
+
+                </div>
+                <div class="form-group">
+<!--                    <label for="exampleInputPassword1">Password</label>-->
+                    <input type="password" class="form-control" id="passwordre" placeholder="Password">
+                </div>
+            </div>
+            <br>
+            <div class="modal-footer" id="default">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="hideReauthModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="reauthenticate()">Re-authenticate</button>
+            </div>
+            <div class="modal-footer" id="delete" style="display: none">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeReauthModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="actuallyDeleteAccount()">Delete Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+  
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+</script>
+
+<script>
+  try{
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+firebase.initializeApp(firebaseConfig);
+    }
+    catch(error){
+      console.log(error);
+    }
+    function signOut() {
+        console.log("signing out");
+        firebase.auth().signOut();
+    }
+    //go to logged in page
+    function goToLoggedIn() {
+        window.location.href = "loggedin.html";
+    }
+
+    //activate modal for reauthentication add add functionality to reauthenticate
+    function reauthenticate() {
+        var email = document.getElementById("emailre").value;
+        var password = document.getElementById("passwordre").value;
+        firebase.auth().currentUser.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(email, password)).then(function() {
+            console.log("reauthenticated");
+            //make page visible
+            document.getElementById("page").style.display = "block";
+            document.getElementById("modalMessage").innerHTML = "Reauthenticated";
+            //set message to reauthenticated successfully
+            document.getElementById("message").innerHTML = "Reauthenticated Successfully";
+
+            document.getElementById("reauthModal").style.display = "none";
+        }).catch(function(error) {
+            document.getElementById("modalMessage").innerHTML = error.message;
+            document.getElementById("message").innerHTML = "Reauthentication Failed";
+            console.log(error);
+        });
+    }
+
+    function actuallyDeleteAccount(){
+        var email = document.getElementById("emailre").value;
+        var password = document.getElementById("passwordre").value;
+        firebase.auth().currentUser.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(email, password)).then(function() {
+            firebase.auth().currentUser.delete().then(function() {
+                console.log("account deleted");
+                alert("Account Deleted");
+                window.location.href = "index.html";
+            }).catch(function(error) {
+                document.getElementById("modalMessage").innerHTML = error.message;
+            });
+            //make page visible
+
+            document.getElementById("reauthModal").style.display = "none";
+        }).catch(function(error) {
+            document.getElementById("modalMessage").innerHTML = error.message;
+            document.getElementById("message").innerHTML = "Reauthentication Failed";
+            console.log(error);
+        });
+
+    }
+
+
+    //made modal for reauthentication visible
+    function showReauthModal() {
+        document.getElementById("modalMessage").innerHTML = "";
+        //if user needs to reauthenticate
+
+        //hide div page
+        document.getElementById("page").style.display = "none";
+
+        //darken background
+        document.getElementById("reauthModal").style.display = "block";
+        //set z-index to be on top of other elements
+        document.getElementById("reauthModal").style.zIndex = "100";
+        //put modal in white card
+        document.getElementById("reauthModal").style.position = "absolute";
+        document.getElementById("reauthModal").style.top = "50%";
+        document.getElementById("reauthModal").style.left = "50%";
+        document.getElementById("reauthModal").style.transform = "translate(-50%, -50%)";
+        document.getElementById("reauthModal").style.width = "500px";
+        document.getElementById("reauthModal").style.height = "350px";
+        document.getElementById("reauthModal").style.backgroundColor = "white";
+        document.getElementById("reauthModal").style.borderRadius = "10px";
+        document.getElementById("reauthModal").style.padding = "20px";
+        // document.getElementById("reauthModal").style.boxShadow = "0px 0px 10px black";
+        document.getElementById("reauthModal").style.margin = "auto";
+        document.getElementById("reauthModal").style.textAlign = "center";
+        document.getElementById("reauthModal").style.fontSize = "20px";
+        // document.getElementById("reauthModal").style.fontFamily = "sans-serif";
+        document.getElementById("reauthModal").style.color = "black";
+        document.getElementById("reauthModal").style.border = "1px solid black";
+        //make body unscrollable and darken background
+
+
+
+
+    }
+    function hideReauthModal() {
+        document.getElementById("reauthModal").style.display = "none";
+        document.getElementById("message").innerHTML = "Reauthentication Failed";
+        goToLoggedIn();
+    }
+    function closeReauthModal() {
+        document.getElementById("page").style.display = "block";
+        document.getElementById("reauthModal").style.display = "none";
+        document.getElementById("message").innerHTML = "Reauthentication Failed";
+        document.getElementById("default").style.display = "block";
+        //show delete
+        document.getElementById("delete").style.display = "none";
+        document.getElementById("message").innerHTML = error.message;
+        //email help You need to reauthenticate to access secure settings
+        document.getElementById("emailHelp").innerHTML = "You need to reauthenticate to access secure settings";
+        //title Please re-authenticate
+        document.getElementById("reauthModalLabel").innerHTML = "Please re-authenticate";
+    }
+
+</script>
+
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+        if(user) {
+            console.log("signed in");
+            document.getElementById("message").innerHTML = "";
+            // document.getElementById("currentname").innerHTML = "hi";
+            // document.getElementById("currentemail").innerHTML = "hi";
+            document.getElementById("currentname").innerHTML = user.displayName;
+            document.getElementById("currentemail").innerHTML = user.email;
+            addDocument();
+            console.log('hello');
+            // queryUser('hello');
+
+            //if user has been logged in for more than a minute showReauthModal();
+            //get auth_time from firebase
+            var auth_time = user.metadata.lastSignInTime;
+            console.log(auth_time);
+            let timestamp1 = new Date(auth_time);
+            console.log(timestamp1);
+
+            //get current time
+            var currentTime = new Date().getTime();
+            console.log(currentTime);
+            let timestamp2 = new Date(currentTime);
+            console.log(timestamp2);
+
+            //get difference in timestamps
+            var difference = timestamp2.getTime() - timestamp1.getTime();
+            console.log(difference);
+            //convert current date and time to timestamp
+
+           //if auth_time is a minute before currentTime
+            if(difference > 60000) {
+                showReauthModal();
+            }
+            else {
+                document.getElementById("page").style.display = "block";
+            }
+        }else {
+            document.getElementById("message").innerHTML = "Not logged in";
+            window.location.href = "index.html";
+        }
+
+    });
+
+
+    // function changeName() {
+
+        document.getElementById("changeName").addEventListener("click", function () {
+            console.log("changing name");
+            //get name from textfield
+            var name = document.getElementById("name").value;
+            //get user
+            var user = firebase.auth().currentUser;
+            //if name is less then 4 characters
+            if(name.length < 4) {
+                document.getElementById("message").innerHTML = "Name must be at least 4 characters";
+            }
+            else {
+                //change name
+                user.updateProfile({
+                    displayName: name
+                }).then(function() {
+                    console.log("name changed");
+                    document.getElementById("message").innerHTML = "Name changed";
+                    document.getElementById("currentname").innerHTML = name;
+                }).catch(function(error) {
+                    document.getElementById("message").innerHTML = error.message;
+                });
+            }
+        });
+    // }
+
+    // function changeEmail(){
+
+        document.getElementById("changeEmail").addEventListener("click", function () {
+            console.log("changing email");
+            //get email from textfield
+            var email = document.getElementById("email").value;
+            //get user
+            var user = firebase.auth().currentUser;
+            //if email is 4 or more characters and contains @ and . then change email\
+            if(email.length >= 4 && email.includes("@") && email.includes(".")){
+                //change email
+                user.updateEmail(email).then(function () {
+                    //update email
+                    document.getElementById("currentemail").innerHTML = user.email;
+                    document.getElementById("message").innerHTML = "Email changed successfully";
+                }).catch(function (error) {
+                    //error
+                    document.getElementById("message").innerHTML = error.message;
+                    //if user needs to reauthenticate
+                    if(error.code == "auth/requires-recent-login"){
+                        showReauthModal();
+                    }
+                });
+            } else {
+                document.getElementById("message").innerHTML = "Email is invalid";
+            }
+        });
+    // }
+
+    // function changePassword(){
+
+        document.getElementById("changePassword").addEventListener("click", function () {
+            //get password from textfield
+            console.log("changing password");
+            var oldpassword = document.getElementById("oldpassword").value;
+            var newpassword1 = document.getElementById("newpassword1").value;
+            var newpassword2 = document.getElementById("newpassword2").value;
+            //get user
+            var user = firebase.auth().currentUser;
+            //change password
+            //check if new passwords match
+            if(newpassword1 == newpassword2){
+                //create credential with old password
+                var credential = firebase.auth.EmailAuthProvider.credential(user.email, oldpassword);
+                //reauthenticate with credential
+                user.reauthenticateWithCredential(credential).then(function(){
+                    //change password
+                    user.updatePassword(newpassword1).then(function(){
+                        //update password
+                        console.log("password changed");
+                        document.getElementById("message").innerHTML = "Password changed successfully";
+                    }).catch(function(error){
+                        //error
+                        document.getElementById("message").innerHTML = error.message;
+                    });
+                }).catch(function(error){
+                    //error
+                    document.getElementById("message").innerHTML = error.message;
+                });
+
+            } else {
+                //error
+                document.getElementById("message").innerHTML = "New passwords do not match";
+            }
+
+        });
+
+        //see if delete account button has been pressed
+        document.getElementById("deleteAccount").addEventListener("click", function () {
+            //get user
+            var user = firebase.auth().currentUser;
+            //delete account
+            document.getElementById("reauthModalLabel").innerHTML = "Reauthenticate to delete your account";
+            //set modalmessage to Deleting an account CANNOT BE REVERSED
+            document.getElementById("emailHelp").innerHTML = "Deleting an account CANNOT BE REVERSED";
+            document.getElementById("message").innerHTML = "";
+
+            //hide default
+            document.getElementById("default").style.display = "none";
+            //show delete
+            document.getElementById("delete").style.display = "block";
+
+            showReauthModal();
+            /*
+            var auth_time = user.metadata.lastSignInTime;
+            console.log(auth_time);
+            let timestamp1 = new Date(auth_time);
+            console.log(timestamp);
+
+            //get current time
+            var currentTime = new Date().getTime();
+            console.log(currentTime);
+            let timestamp2 = new Date(currentTime);
+            console.log(timestamp2);
+
+            //get difference in timestamps
+            var difference = timestamp2.getTime() - timestamp1.getTime();
+            console.log(difference);
+            //convert current date and time to timestamp
+
+            if(difference < 100) {
+                user.delete().then(function () {
+                    //user deleted
+
+                    console.log("user deleted");
+                    document.getElementById("message").innerHTML = "Account deleted successfully";
+                    alert("Account deleted successfully");
+                    window.location.href = "index.html";
+                }).catch(function (error) {
+                    //error
+                    //hide default
+                    //set message to error message
+                    document.getElementById("modalMessage").innerHTML = error.message;
+                });
+            }
+            */
+        });
+        //search for user name in database and get their id and email
+        // function searchUser(name){
+        //     var uid = "";
+        //     var email = "";
+        //     var database = firebase.database();
+        //     var ref = database.ref("user-data-venge");
+        //     ref.orderByChild("name").equalTo(name).on("child_added", function(snapshot) {
+        //         uid = snapshot.key;
+        //         email = snapshot.val().email;
+        //         console.log(uid);
+        //         console.log(email);
+        //     });
+        //     return [uid, email];
+        // }
+
+        //query database for user name and get their id and email
+
+    //find user by email return user id and name
+    // checkUserExistEmail = async (email) => {
+    //     const querySnapshot = await firebase.firestore()
+    //         .collectionGroup('user-data-venge')
+    //         .where("email", "==", email)
+    //         .get()
+
+    //     if (!querySnapshot.empty) {
+    //         console.log(querySnapshot.docs[0].id);
+    //         // console.log(querySnapshot.docs[0]);
+    //         // console.log(querySnapshot.docs[0].data());
+    //         console.log(querySnapshot.docs[0].data().name);
+    //         return [querySnapshot.docs[0].id, querySnapshot.docs[0].data().name];
+    //     }
+    //     else {
+    //         return null;
+    //     }
+    // }
+
+    // checkUserExistEmail('xavmillan@gmail.com');
+
+    // checkUserExistName = async (name) => {
+    //     const querySnapshot = await firebase.firestore()
+    //         .collectionGroup('user-data-venge')
+    //         .where("name", "==", name)
+    //         .get()
+
+    //     if (!querySnapshot.empty) {
+    //         console.log(querySnapshot.docs[0].id);
+    //         // console.log(querySnapshot.docs[0]);
+    //         // console.log(querySnapshot.docs[0].data());
+    //         console.log(querySnapshot.docs[0].data().email);
+    //         return [querySnapshot.docs[0].id, querySnapshot.docs[0].data().email];
+    //     }
+    //     else {
+    //         return null;
+    //     }
+    // }
+    // checkUserExistName('hello');
+
+    //get all users from database
+    // getAllUsers = async () => {
+    //     const querySnapshot = await firebase.firestore()
+    //         .collectionGroup('user-data-venge')
+    //         .get()
+
+    //     if (!querySnapshot.empty) {
+    //         console.log(querySnapshot.docs[0].id);
+    //         // console.log(querySnapshot.docs[0]);
+    //         // console.log(querySnapshot.docs[0].data());
+    //         console.log(querySnapshot.docs[0].data().name);
+    //         return [querySnapshot.docs[0].id, querySnapshot.docs[0].data().name];
+    //     }
+    //     else {
+    //         return null;
+    //     }
+    // }
+
+    //search 'posts' by title and content and get the post id of post containing the search term
+    //get file from google cloud storage and display it in the image tag
+    //get file from google cloud storage bucket 'posts-venge' folder post0 and display it in the image tag
+
+    findPostByTitle = async (title) => {
+        const querySnapshot = await firebase.firestore()
+            .collectionGroup('posts')
+            .where("title", "==", name)
+            .get()
+
+        if (!querySnapshot.empty) {
+            console.log(querySnapshot.docs[0].id);
+            // console.log(querySnapshot.docs[0]);
+            // console.log(querySnapshot.docs[0].data());
+            console.log(querySnapshot.docs[0].data().email);
+            return [querySnapshot.docs[0].id, querySnapshot.docs[0].data().email];
+        }
+        else {
+            return null;
+        }
+    }
+
+
+        // add document to  with user id and name
+        function addDocument(){
+            //get user
+            var user = firebase.auth().currentUser;
+            //get name from textfield
+            var name = user.displayName;
+            //get email from textfield
+            var email = user.email;
+            //get user id
+            var userid = user.uid;
+            //get current time
+            var currentTime = new Date().getTime();
+            //get current date
+            var currentDate = new Date(currentTime);
+            //get current date and time
+            var date = currentDate.getDate() + "/" + (currentDate.getMonth()+1) + "/" + currentDate.getFullYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+            //add document to database
+            firebase.firestore().collection("user-data-venge").doc(userid).set({
+                name: name,
+                email: email,
+                date: date
+            }).then(function(){
+                //document added
+                console.log("document added");
+            }).catch(function(error){
+                //error
+                console.log(error);
+            });
+        }
+
+        // function addDocument(userId, name, email, password) {
+        //     var db = firebase.firestore();
+        //     db.collection("user-data-venge").doc(userId).set({
+        //         name: name,
+        //         email: email
+        //     });
+        // }
+
+
+        //get user image from google cloud datastore api
+
+
+
+        // document.getElementById("getImage").addEventListener("click", function () {
+        //     //get user
+        //     var user = firebase.auth().currentUser;
+        //     //get image from google cloud storage
+        //     var storage = firebase.storage();
+        //     var storageRef = storage.ref();
+        //     var imageRef = storageRef.child('images/' + user.uid + '.jpg');
+        //     imageRef.getDownloadURL().then(function(url) {
+        //         //set image to url
+        //         document.getElementById("userimage").src = url;
+        //     }).catch(function(error) {
+        //         //error
+        //         console.log(error);
+        //     });
+        // }
+        // );
+
+    //when changeProfilePicture button is pressed update user profile picture
+
+</script>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logged In</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container" id="sign-in-view">
+        <div class="form">
+<!--             <img id="profile"></img> -->
+            <h1>Welcome</h1>
+            <h2 id="name"></h2>
+            <h2 id="email"></h2>
+            <h4 id="uid"></h4>
+            <h4 id="verified"></h4>
+            <h2 id="message"></h2>
+
+
+        </div>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Venge</h1>
+                <p>You are now signed in!</p>
+                <button class="ghost" id="acountDetail" onclick="goToAccountDetails()">Account Details</button>
+                <br>
+                <button class="ghost" id="signOut" onclick="signOut()">Sign Out</button>
+              <br>
+                <button class="ghost" id="forum" onclick="forum()">Forum</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div id="message"></div>-->
+
+
+
+
+<!--<input class="ghost" type="submit" value="Sign Out" onclick="signOut()">-->
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/8.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+   // try{
+
+firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+   // }
+   // catch(err){
+     console.log(err);
+   // }
+</script>
+  
+
+<script>
+
+  try{
+    const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+firebase.initializeApp(firebaseConfig);
+    }
+    catch(error){
+      console.log(error);
+    }
+    function signOut() {
+        firebase.auth().signOut();
+    }
+    function goToAccountDetails() {
+        window.location.href = "accountdetails.html";
+    }
+    function forum(){
+      window.location.href = "forum.html";
+    }
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+    // user = firebase.auth().currentUser;
+
+        if(user) {
+            if(!verifyEmail()){
+                document.getElementById("verified").innerHTML = "Email not verified";
+            }
+            else{
+                document.getElementById("verified").innerHTML = "Email verified";
+            }
+            //if first login, set firstlogin to false
+            console.log(user.uid);
+            if(localStorage.getItem("firstlogin") == "true"){
+                //get name from local storage and set to user's name
+                var name = localStorage.getItem("name");
+                console.log(name);
+                document.getElementById("name").innerHTML = name;
+                //set users name to name
+                firebase.auth().currentUser.updateProfile({
+                    displayName: name
+                }).then(function() {
+                    console.log("Name confrimed");
+                    document.getElementById("name").innerHTML = name;
+                    //get innerhtml of name and console log it
+                    console.log(document.getElementById("name").innerHTML);
+                    // Update successful.
+                }).catch(function(error) {
+                    console.log("Name error")
+                    // An error happened.
+                });
+
+                localStorage.setItem("firstlogin", "false");
+                //clear name from local storage
+                localStorage.removeItem("name");
+                //refresh page
+                // window.location.reload();
+            }
+
+            //Here you can place the code that you want to run if the user is logged in
+            //set img profile src to user's profile picture
+            // var img = document.getElementById("profile");
+            // img.src = user.photoURL;
+            document.getElementById("message").innerHTML = "";
+            document.getElementById("name").innerHTML = user.displayName;
+            document.getElementById("email").innerHTML = user.email;
+            document.getElementById("uid").innerHTML = user.uid;
+
+
+            // user.sendEmailVerification();
+            // console.log("1");
+            // firebase.auth().currentUser.sendEmailVerification();
+            // console.log("2");
+
+
+
+        } else {
+            document.getElementById("message").innerHTML = "Welcome, ";
+            // index.html
+            window.location.href = "index.html";
+            // window.location = "/";
+        }
+
+    });
+
+</script>
+<script src="auth.js"></script>
+</html>
