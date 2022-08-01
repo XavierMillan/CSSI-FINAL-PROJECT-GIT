@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet"
+    href="A.fonts,,_icomoon,,_style.css+css,,_owl.carousel.min.css+css,,_bootstrap.min.css+css,,_style.css,Mcc.iq-Irt1J63.css.pagespeed.cf.67EAq9-gxU.css">
+  <link href="trivia.css" rel="stylesheet" type="text/css" />
+</head>
+
+<header class="site-navbar" role="banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-11 col-xl-2">
+        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">Brand</a></h1>
+      </div>
+      <div class="col-12 col-md-10 d-none d-xl-block">
+        <nav class="site-navigation position-relative text-right" role="navigation">
+          <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+            <li class="active"><a href="index.html"><span>Home</span></a></li>
+            <li class="has-children">
+              <a href=""><span>For Students</span></a>
+              <ul class="dropdown arrow-top">
+                <li><a href="#">Menu One</a></li>
+                <li><a href="#">Menu Two</a></li>
+                <li><a href="#">Menu Three</a></li>
+                <li class="has-children">
+                  <a href="#">Games</a>
+                  <ul class="dropdown">
+                    <li><a href="/games/trivia/trivia.html">Trivia Game</a></li>
+                    <li><a href="#">Menu Two</a></li>
+                    <li><a href="#">Menu Three</a></li>
+                    <li><a href="#">Menu Four</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="listings.html"><span>For Teachers</span></a></li>
+            <li><a href="about.html"><span>About</span></a></li>
+            <li><a href="forum.html"><span>Forum</span></a></li>
+            <li><a href="login.html"><span>Login</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#"
+          class="site-menu-toggle js-menu-toggle text-white active"><span class="icon-menu h3"></span></a></div>
+    </div>
+  </div>
+
+</header>
+
+<body>
+  <!--   Nav Bar -->
+
+
+  <!--   Made a div called main body -->
+  <div id="mainBody">
+
+    <!--     these icons are for toggling the navigation bar-->
+    <div id="iconBox"></div>
+    <img id="xIcon" onclick="toggleOff()" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png">
+    <img id="eyeIcon" onclick="toggleOn()" src="https://cdn-icons-png.flaticon.com/512/2867/2867280.png">
+
+    <!-- gamestart--easy or hard mode -->
+    <div id="StartTriviaGame" class='rect'>
+      <div class="title is-2" style="margin-top:75px;color: white;
+  ">
+        Computer Science Trivia
+      </div>
+      <div style="color: white;">
+        Test your Computer Science knowledge!
+      </div>
+      <div class="triviaButs">
+        <div class="title is-1 glow-on-hover" style="color: white;margin-right: 30px;
+  " onclick="getQuestion('easy')">Easy</div>
+        <div class="title is-1 glow-on-hover" style="color: white;margin-left: 30px;
+  " onclick="getQuestion('medium')">Hard</div>
+      </div>
+    </div>
+    <!--     game during -->
+    <div id="triviaGame" class='rect hidden'>
+      <div id="question" class="subtitle is-3  typewriter" style="margin-top:50px">
+
+      </div>
+      <div id="answer" class="subtitle is-4 typewriter" style="">
+
+      </div>
+      <div id="answer" class="subtitle is-4 typewriter" style="">
+
+      </div>
+      <div id="answer" class="subtitle is-4 typewriter" style="">
+
+      </div>
+      <div id="answer" class="subtitle is-4 typewriter" style="">
+
+      </div>
+      <div class="triviaButs">
+        <div class="title is-2 glow-on-hover" style="color: white;margin-right: 20px;
+  " onclick="restartGame()">Home</div>
+        <div id="continue" class="title is-2 glow-on-hover hidden" style="color: white;margin-left: 20px;
+  " onclick="continueGame()">Continue</div>
+        <div id="triviaPoints" class="title is-2" style="color: white;margin-left: 20px;
+  ">Points: 0/3</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--   game end --Incomplete. (was thinking roulette wheel with prizes (points)-->
+  </div>
+
+
+
+  <script src="trivia.js" defer></script>
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

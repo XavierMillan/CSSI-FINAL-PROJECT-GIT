@@ -242,8 +242,9 @@ firebase.initializeApp(firebaseConfig);
 
 <script type="text/javascript"> 
 
+//what happens after logged in
 firebase.auth().onAuthStateChanged(function(user) {
-
+  
   if(user && user.emailVerified) {
     console.log("logged in");
     console.log(user.email);

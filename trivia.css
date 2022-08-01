@@ -1,0 +1,172 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.typewriter{
+  overflow: hidden;
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  animation: 
+    typing 5.5s steps(20, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00ff1e; }
+}
+
+.navbar {
+  height:10%;
+  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
+  background-size: cover;
+}
+.hero {
+  background-image:url("https://cdn.wallpapersafari.com/25/17/Qk6syj.jpg");
+  background-size:cover;
+}
+#mainBody {
+  background-image:url("https://cdn.wallpapersafari.com/25/17/Qk6syj.jpg");
+  background-size:cover;
+  height:100%;
+}
+
+.hidden {
+  display:none!important;
+}
+
+#xIcon {
+  position:absolute;
+  height:25px;
+  width:auto;
+  margin-top:7px;
+  margin-left: 97%;
+}
+
+#eyeIcon {
+  position:absolute;
+  height:27px;
+  width:auto;
+  margin-top:7px;
+  margin-left: 94%;
+}
+
+#iconBox {
+  position:absolute;
+  margin-left: 93.5%;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  opacity:.5;
+  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
+  width: 85px;
+  height: 40px;  
+}
+
+.rect {
+    color:white;
+    font: 1.3rem Inconsolata, monospace;
+    display:flex;
+    flex-direction:column;
+    text-align: center;
+    background-color: black;
+    background-image: radial-gradient(
+    rgba(0, 150, 0, 0.75), black 120%
+  );
+    text-shadow: 0 0 5px #C8C8C8;
+   width: 800px;
+  height: 550px;
+  border-radius: 20px;
+   padding: 25px;
+   margin: 25px;
+/*    justify-content:center; */
+   position: absolute;
+   top: 20%;
+   left: 50%;
+   margin-left: -29%;
+      }
+.rect:hover{
+  cursor: cell;
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #00ff4c, #aeff00, #ffc800, #53b800, #ffde0a, #3dad00, #70e000, #ffd642, #08b43c);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #11ff00
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+.triviaButs{
+  margin:auto;
+ display:flex;
+  justify-content:space-around;
+}
+#trivia{
+  color:white;
+}
+#question{
+  color:white;
+}
+#answer{
+  color:white;
+}
