@@ -3,7 +3,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: scroll;
+  overflow: auto;
    background-image: linear-gradient(to left, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -51,8 +51,4 @@ html, body {
   src: local(''),
        url('../fonts/monoton-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../fonts/monoton-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
-footer{
-  
 }

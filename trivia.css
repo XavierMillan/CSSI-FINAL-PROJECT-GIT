@@ -175,8 +175,7 @@ html, body {
             0 0 2.8rem #bc13fe,
             inset 0 0 1.3rem #bc13fe; 
 
-  font-family: "Sacramento", sans-serif;
- 
+  font-family: "Audiowide", sans-serif;
   
 }
 .l {
@@ -194,4 +193,7 @@ html, body {
     0 0 92px #bc13fe,
     0 0 102px #bc13fe,
     0 0 151px #bc13fe;
+}
+#score0{
+  margin-top:5%;
 }

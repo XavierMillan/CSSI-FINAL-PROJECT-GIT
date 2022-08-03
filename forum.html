@@ -32,6 +32,7 @@
 
 
 <body>
+  <button type="button" class="btn btn-primary openmodal" id="open" style="display: none">Open</button>
   <header class="site-navbar" role="banner">
     <div class="container">
       <div class="row align-items-center">
@@ -112,20 +113,20 @@
         </div>
 
         <label>Categories</label>
-        <div id="cetegoryselector">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Python</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Javascript</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-            <label class="form-check-label" for="inlineCheckbox3">Java</label>
-          </div>
-        </div>
+<br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">Javascript</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+  <label class="form-check-label" for="inlineRadio3">Random</label>
+</div>
+        <br>
         <br>
         <button type="button" class="btn btn-primary" id="submit1">Post</button>
       </form>
@@ -143,20 +144,20 @@
         </div>
 
         <label>Categories</label>
-        <div id="cetegoryselector">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Python</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Javascript</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-            <label class="form-check-label" for="inlineCheckbox3">Java</label>
-          </div>
-        </div>
+<br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">Javascript</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+  <label class="form-check-label" for="inlineRadio3">Random</label>
+</div>
+        <br>
         <br>
         <div class="progress" id="progressdiv" style="display: none">
           <div id="uploader" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
@@ -174,7 +175,7 @@
   <!-- Modal -->
 
   <div class="modal fade" id="postDetailModal" tabindex="-1" role="dialog" aria-labelledby="postDetailModalTitle"
-    aria-hidden="true" style="z-index: 9999;">
+    aria-hidden="true" style="z-index: 9999;>
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -222,8 +223,22 @@
   </section>
 
 
-
+<br>
+  <br>
+  <br>
+  <br>
 </body>
+
+<footer class="bg-light" style="padding-top:1rem; padding-bottom:1.5rem">
+  <div class="container" style="text-align: center;">
+    <a class="text-primary" href="index.html">
+      <h5>Home 🏠</h5>
+    </a>
+    <a class="text-primary" href="">
+      <h6>Back to top 🔝</h6>
+    </a>
+  </div>
+</footer>
 
 <script src="forum.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
@@ -235,6 +250,8 @@
 
 
 <script>
+
+
   // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
 
   const firebaseConfig = {
@@ -261,8 +278,8 @@
       console.log(user.email);
       document.getElementById("newPostCard").style.display = "block";
       document.getElementById("newComment").style.display = "block";
-
-    } else if (user) {
+    }
+    else if (user) {
       document.getElementById("messagePane").innerHTML = "To post you must verify your email";
       document.getElementById("newPostCard").style.display = "none";
       document.getElementById("newComment").style.display = "none";
@@ -396,7 +413,7 @@
             console.log(firebase.auth().currentUser.uid, doc.data().uid);
             console.log(deleteButtonHTML);
           }
-
+//https://cssi-main.xavim1.repl.co/forum.html?postid=
 
           if (imageurl.length < 10) {
             var xmlString = `
@@ -408,6 +425,7 @@
         <p class="card-text">${content}</p>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
+        <button type="button" class="btn btn-primary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
         ${deleteButtonHTML}
         <br>
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
@@ -433,6 +451,7 @@
           <br>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
+        
         ${deleteButtonHTML}
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
         </div>
@@ -452,7 +471,7 @@
 
 
 
-        }
+      }
         // return posts;
         let openModal = document.getElementsByClassName('openmodal');
         console.log(openModal.length);
@@ -471,7 +490,22 @@
             //  console.log(docId);
 
           });
+          
         }
+        
+          var url = new URL(window.location.href);
+    var postidparam = url.searchParams.get("postid");
+    if(postidparam.length > 5) {
+        setModal(postidparam);
+      
+    }
+        el = document.getElementById('open');
+if (el.onclick) {
+   el.onclick();
+} else if (el.click) {
+   el.click();
+}
+        
 
 
         let deleteButtons = document.getElementsByClassName('delete');
@@ -563,9 +597,10 @@
               
             </div>
       */
+   
 
 
-    setModal = async (docid) => {
+  setModal = async (docid) => {
       const querySnapshot = await firebase.firestore()
         .collection("posts")
         .doc(docid)

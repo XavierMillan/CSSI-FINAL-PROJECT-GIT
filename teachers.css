@@ -3,7 +3,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: scroll;
+  overflow: auto;
   background-image: linear-gradient(to right, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
   background-attachment: fixed;
   background-repeat: no-repeat;

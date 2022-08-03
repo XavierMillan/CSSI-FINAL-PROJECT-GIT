@@ -133,7 +133,7 @@
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       //to here
-      let word = "Welcome " + user.displayName;
+      let word = "Hello " + user.displayName +"!";
       console.log(word);
       var typed = new Typed(".hello-world", {
         strings: [word],

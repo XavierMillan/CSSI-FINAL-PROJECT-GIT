@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Work</title>
+  <title>Lesson 1</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -69,9 +69,11 @@
       color: white;
       padding: 6.5px;
     }
-    .preMargin{
-        margin-bottom:0;
-      }
+
+    .preMargin {
+      margin-bottom: 0;
+    }
+
     .parent {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -118,7 +120,7 @@
 
 </header>
 
-<body style="overflow: visible; display: none">
+<body style="overflow: visible; display: none;">
   <br>
   <br>
   <br>
@@ -132,7 +134,8 @@
   <br>
 
   <div class="parent">
-    <pre class='preMargin'><code id="editor1" class="Javascript editor" contentEditable="true">let variable1 = "Hello and Welcome"; <br>let variable2 = 12345; <br>let variable3 = true; <br>let variable4 = null; <br>console.log(variable1 + " " + variable2 + " " + variable3 + " " + variable4); <br><br></code></pre>
+    <pre
+      class='preMargin'><code id="editor1" class="Javascript editor" contentEditable="true">let variable1 = "Hello and Welcome"; <br>let variable2 = 12345; <br>let variable3 = true; <br>let variable4 = null; <br>console.log(variable1 + " " + variable2 + " " + variable3 + " " + variable4); <br><br></code></pre>
 
     <div class="results" id="result1"></div>
 
@@ -154,7 +157,8 @@
   <br>
 
   <div class="parent">
-    <pre class='preMargin'><code id="editor2" class="Javascript editor" contentEditable="true">let variable1 = "Hi"; <br>var variable2 = "Hi"; <br>const variable3 = "Hi"; <br>console.log(variable1 + " " + variable2 + " " + variable3); <br><br><br></code></pre>
+    <pre
+      class='preMargin'><code id="editor2" class="Javascript editor" contentEditable="true">let variable1 = "Hi"; <br>var variable2 = "Hi"; <br>const variable3 = "Hi"; <br>console.log(variable1 + " " + variable2 + " " + variable3); <br><br><br></code></pre>
 
     <div class="results" id="result2"></div>
 
@@ -177,7 +181,8 @@
   <p>What might if you tried adding total to another number? Try logging the results to the console!</p>
 
   <div class="parent">
-    <pre class='preMargin'><code id="editor3" class="Javascript editor" contentEditable="true">console.log(2+4); <br>let total = 2 + 4;<br><br><br><br><br></code></pre>
+    <pre
+      class='preMargin'><code id="editor3" class="Javascript editor" contentEditable="true">console.log(2+4); <br>let total = 2 + 4;<br><br><br><br><br></code></pre>
 
     <div class="results" id="result3"></div>
 
@@ -200,7 +205,8 @@
   <p>Challenge:Amy is really indecisive. Add 3 hams and 6 pineapples</p>
 
   <div class="parent">
-    <pre class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">let apple = 5;<br>let pear = 2;<br>let turkey = 1;<br>console.log("Amy Grocery List:");<br>console.log("apples:" + apple);<br>console.log("pears:" + pear);<br>console.log("turkeys:" + turkey);<br><br></code></pre>
+    <pre
+      class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">let apple = 5;<br>let pear = 2;<br>let turkey = 1;<br>console.log("Amy Grocery List:");<br>console.log("apples:" + apple);<br>console.log("pears:" + pear);<br>console.log("turkeys:" + turkey);<br><br></code></pre>
 
     <div class="results" id="result4"></div>
 
@@ -247,7 +253,8 @@
     </div>
     <br>
     <h4>Knowledge Test</h4>
-    <p>Define three variables of your choice using 'Let', and print them all the the console using three console.log statements on seperate lines!  Don't forget semi-colons</p>
+    <p>Define three variables of your choice using 'Let', and print them all the the console using three console.log
+      statements on seperate lines! Don't forget semi-colons</p>
     <div class="parent">
       <pre class='preMargin'><code id="editor6" class="Javascript editor" contentEditable="true"><br><br><br><br><br><br>
     </code></pre>
@@ -255,7 +262,7 @@
       <div class="results" id="result6"></div>
 
     </div>
-    <div style="margin: 0 auto; width: 656px; text-align: center;">
+    <div style="margin: 0 auto; width: 656px; text-align: center; padding-bottom:2rem;">
       <br>
       <button class="btn btn-success" id="run6" style="width: 15%">Run</button>
       <button class="btn btn-success" id="grade" style="width: 15%">Grade</button>
@@ -264,6 +271,17 @@
 
 </body>
 
+<footer style="padding-top:1rem; padding-bottom:1.5rem; background:lightgrey;">
+  <div class="container" style="text-align: center;">
+    <a class="text-primary" href="index.html">
+      <h5>Home 🏠</h5>
+    </a>
+    <a class="text-primary" href="">
+      <h6>Back to top 🔝</h6>
+    </a>
+  </div>
+</footer>
+  
 <!--   you need to copy these -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
@@ -408,22 +426,22 @@
     getCode(6);
     console.log(typeof errorBool);
     console.log(typeof grade());
-    if(!errorBool && grade()){
+    if (!errorBool && grade()) {
       increaseLevel()
       alert("level completed");
     }
-    
+
   });
 
 
-  function grade(){
+  function grade() {
     var code = document.getElementById('editor6').innerHTML;
     let countLet = (code.match(/let/g) || []).length;
     let countConsole = (code.match(/console.log/g) || []).length;
-    if(countLet >=3 && countConsole>=3){
+    if (countLet >= 3 && countConsole >= 3) {
       return true;
     }
-    else{
+    else {
       return false;
     }
   }
@@ -463,9 +481,9 @@
             data = doc.data().level;
             console.log(data);
           }
-          if(data == 1){
-          let newLevel = docRef.update({level: data + 1});
-          console.log(newLevel);
+          if (data == 1) {
+            let newLevel = docRef.update({level: data + 1});
+            console.log(newLevel);
           }
 
 
