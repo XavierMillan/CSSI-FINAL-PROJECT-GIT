@@ -24,11 +24,17 @@
       hljs.initLineNumbersOnLoad();
   </script>
     <style>
-        html, body {
-            height: 100%;
+         html, body {
+            height: 200%;
             width: 100%;
-            overflow: hidden;
+            overflow: scroll;
         }
+      h1,h2,h3,h4,h5,h6{
+        margin: 0 auto; width: auto; text-align: center;
+      }
+      p{
+        margin-left: 30%; margin-right: 30%; text-align: center; color: black;
+      }
         .hljs {
             background: lightgrey;
 
@@ -85,7 +91,7 @@
 
   </header>
   
-<body style="overflow: visible">
+<body style="overflow: visible; display: none">
   <br>
   <br>
   <br>
@@ -94,8 +100,12 @@
    <h1 style="margin: 0 auto; width: auto; text-align: center;">Lesson 3: loops</h1>
   <br>
   <br>
+  <h4>Loops are used to execute code multiple times</h4>
+  <br>
+  <p>There are two main types of loops 'for' and 'while' loops. 'for' loops have the variable you are using to track the number of repetitions in the head of the loop on the other hand 'while' loops head is more akin to that of an if statement where there is a single boolean expression where the loop will continue to run while that condition is true.</p>
+<br>
 <div class="parent">
-  <pre><code id="editor1" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre><code id="editor1" class="Javascript editor" contentEditable="true">/*For Loop*/ <br>for(let i = 0; i < 4; i++){ <br>console.log(i);<br>} <br>/*While Loop*/ <br>let j = 0; <br>while(j<4){ <br>console.log(j*10); <br>j++; </br>}<br></code></pre>
   
   <div class="results" id="result1"></div>
 
@@ -163,6 +173,12 @@
 </div> 
   
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
   
   <script>
@@ -176,7 +192,7 @@ function resizeEditor() {
     divs[i].style.height = (divs[i].clientHeight - 2) + "px"; 
   } 
 }
-    resizeEditor();
+    // resizeEditor();
 
     
     
@@ -202,23 +218,26 @@ function getCode(num) {
   //TODO: maybe add back
     var code = document.getElementById(editor).innerHTML;
   console.log(code);
-  // code = code.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
-// let code;
-  
-    // code = code.replace(/<div.*?>/g, "").replace(/<\/div>/g, "");
-    // code = code.replace(/<pre.*?>/g, "").replace(/<\/pre>/g, "");
-    // code = code.replace(/<code.*?>/g, "").replace(/<\/code>/g, "");
-   //comvert &gt; to > and &lt; to < and &amp; to & and &quot; to " and &apos; to "' and &nbsp; to " " and &#xA; to "\n" and &#xD; to "\r" and &#x9; to "\t"
-    code = code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#xA;/g, "\n").replace(/&#xD;/g, "\r").replace(/&#x9;/g, "\t");
+//remove html tags before parsing and executing
+  code = code.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+    code = code.replace(/<div.*?>/g, "").replace(/<\/div>/g, "");
+    code = code.replace(/<pre.*?>/g, "").replace(/<\/pre>/g, "");
+    code = code.replace(/<code.*?>/g, "").replace(/<\/code>/g, "");
+  code = code.replace(/font.*?>/g, "").replace(/<\/font>/g, "");
+    code = code.replace(/<br>/g, "");
+    
 
-    // code = code.replace(/<br>/g, "");
-    //add new line after every } or{
-    code = code.replace(/{/g, "{\n");
-    code = code.replace(/}/g, "}\n");
-
+  //errors wehn using boolean statements
     //replace all html tags with nothing
-    code = code.replace(/<.*?>/g, "");
-    //add a new line after every ;
+    // code = code.replace(/<.*?>/g, "");
+
+  //line formatting
+  //comvert &gt; to > and &lt; to < and &amp; to & and &quot; to " and &apos; to "' and &nbsp; to " " and &#xA; to "\n" and &#xD; to "\r" and &#x9; to "\t"
+    code = code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#xA;/g, "\n").replace(/&#xD;/g, "\r").replace(/&#x9;/g, "\t");
+  //add new line after every } or{
+    code = code.replace(/{/g, "{\n");
+    code = code.replace(/}/g, "}\n");  
+  //add a new line after every ;
     code = code.replace(/;/g, ";\n");
 
     code = Babel.transform(code, {'presets': ['es2015']}).code;
@@ -282,8 +301,8 @@ document.getElementById("run1").addEventListener("click", function() {
   getCode(4);
 });
 
-    document.getElementById("run4").addEventListener("click", function() {
-  console.log('click4'); 
+    document.getElementById("run5").addEventListener("click", function() {
+  console.log('click5'); 
   getCode(4);
 });
 // document.getElementById("clear2").addEventListener("click", function() {
@@ -291,7 +310,85 @@ document.getElementById("run1").addEventListener("click", function() {
 //   document.getElementById("editor2").innerHTML = "";
 //   resizeEditor();
 // });
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
 
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+function increaseLevel(){
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+    async function updateLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+      var data = "";
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+      }
+      let newLevel = docRef.update({level: data+1});
+      console.log(newLevel);
+
+
+      
+  }
+    
+    updateLevel();
+    
+        }
+  else{
+    console.log("logged out");
+  }
+      });
+}
+   //call this lien to increase level by
+    // increaseLevel();
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+     var data = "";
+    async function getLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+     
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+
+        if(data <5){
+          console.log("no access");
+          window.location.href = "progression.html";
+        }
+         document.body.style.display = "block";
+        
+      }
+      resizeEditor();
+      resizeEditor();
+  }
+    getLevel();
+
+  }
+  else{
+    window.location.href = "index.html";
+    console.log("logged out");
+  }
+});
 
 
   </script>

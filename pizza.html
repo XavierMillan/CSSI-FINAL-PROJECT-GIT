@@ -41,7 +41,7 @@
 </header>
 
 
-<body>
+<body style="display: none">
 
   <!--   Made a div called main body -->
   <div id="mainBody">
@@ -145,12 +145,12 @@
   </div>
   <br>
     <div id="leaderboard">
-      <h2>Leaderboard</h2>
-      <h3 id="score0"></h3>
-      <h3 id="score1"></h3>
-      <h3 id="score2"></h3>
-      <h3 id="score3"></h3>
-      <h3 id="score4"></h3>
+      <h2 id='leaderboardTitle'>Leaderboard</h2>
+      <h3 class = 'rowL' id="score0"></h3>
+      <h3 class = 'rowL' id="score1"></h3>
+      <h3 class = 'rowL' id="score2"></h3>
+      <h3 class = 'rowL' id="score3"></h3>
+      <h3 class = 'rowL' id="score4"></h3>
     </div>
  
 
@@ -163,8 +163,95 @@
  
 
 
- <script src="progression.js" defer></script>
+<!--  <script src="progression.js" defer></script> -->
   <script src="pizza.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <script>
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+function increaseLevel(){
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+    async function updateLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+      var data = "";
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+      }
+      let newLevel = docRef.update({level: data+1});
+      console.log(newLevel);
+
+
+      
+  }
+    
+    updateLevel();
+    
+        }
+  else{
+    console.log("logged out");
+  }
+      });
+}
+   //call this lien to increase level by
+    // increaseLevel();
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+     var data = "";
+    async function getLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+     
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+
+        if(data <2){
+          console.log("no access");
+          window.location.href = "progression.html";
+        }
+         document.body.style.display = "block";
+        
+      }
+  }
+    getLevel();
+  }
+  else{
+    window.location.href = "index.html";
+    console.log("logged out");
+  }
+});
+    
+  </script>
 
   
 <!--   <script src="pizzaleaderboard.js" defer></script> -->

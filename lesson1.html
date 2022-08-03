@@ -95,7 +95,7 @@
 
   </header>
   
-<body style="overflow: visible">
+<body style="overflow: visible; display: none">
   <br>
   <br>
   <br>
@@ -117,7 +117,7 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run1" style="width: 15%">Run</button>
-  <button id="clear1" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear1" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
   
 <br>
@@ -136,7 +136,7 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run2" style="width: 15%">Run</button>
-  <button id="clear2" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear2" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
 
 <br>
@@ -157,7 +157,7 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run3" style="width: 15%">Run</button>
-  <button id="clear3" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear3" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
 
 <br>
@@ -180,7 +180,7 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run4" style="width: 15%">Run</button>
-  <button id="clear4" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear4" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
   <br>
 <h6>Note on Naming Variables</h6>
@@ -193,32 +193,11 @@
   <p> Variables can be used in a variety of different ways.  The example code below are just a few examples!  Try running the code and notice the output.  Experiment with the examples, or try out some fo the challenges below:</p><
   <p style='height:130px; overflow-y:scroll; background-color:rgb(217, 233, 255)'>
     1. a) In the rectangle example, change the width of rect1 and rect2 to 10.  Run the code and see
-    how the rectangles' areas change...<br><br> b) Why is it that rect2's area changes when width is changes, but rect1's area doesn't change?[if you're stuck, consider trying to change rect1's area to [rect1Width*rect1Height]]<br><br>c)try making variables to calculate the area of a triangle!  Log your triangle to the console <br><br>2. a)In the Greeting example, change the variable, 'name', to your name.  Run and see the result!<br><br>b) Try finding where to add the variable 'lastName'
+    how the rectangles' areas change...<br><br> b) Why is it that rect2's area changes when width is changes, but rect1's area doesn't change?[if you're stuck, consider trying to change rect1's area to [rect1Width*rect1Height]]<br><br>c)try making variables to calculate the area of a triangle!  Log your triangle to the console <br><br>2. a)In the Greeting example, change the variable, 'name', to your name.  Run and see the result!<br><br>b) Try finding where to add the variable 'sayHello' to the console.log so that the console prints, 'Hey, how is it going John Smith?'<br><br>c)create a variable for the weather and find a way to log a phrase describing the weather.
   </p>
   <br>
    <div class="parent">
-  <pre><code id="editor5" class="Javascript editor" contentEditable="true">
-    //Rectangle Example<br>
-    <br>
-    //rect1<br>
-    let rect1Area = 30;<br>
-    let rect1Height = 5;<br>
-    let rect1Width = 6;<br>
-    //rect2<br>
-    let rect2Area = 30;<br>
-    let rect2Height = 5;<br>
-    let rect2Width = 6;<br>
-    <br>
-    console.log('Rectangle Example:')<br>
-    console.log('rect1Area = ' + rect1Area)<br>
-    console.log('rect2Area = ' + rect2Area)<br>
-    <br>
-    //Greeting Example<br>
-    let name = 'John'<br>
-    let lastName = 'Smith'<br>
-    <br>
-    console.log('Greeting Example: ')<br>
-    console.log('How is it going ' + name + '?')<br>
+  <pre><code id="editor5" class="Javascript editor" contentEditable="true">let rect1Area = 30;<br>let rect1Height = 5;<br>let rect1Width = 6;<br>let rect2Area = 30;<br>let rect2Height = 5;<br>let rect2Width = 6;<br><br>console.log('Rectangle Example:');<br>console.log('rect1Area = ' + rect1Area);<br>console.log('rect2Area = ' + rect2Area);<br><br>let name = 'John';<br>let sayHello = 'Hello, ';<br><br>console.log('Greeting Example: ');<br>console.log('How is it going ' + name + '?');
     </code></pre>
   
   <div class="results" id="result5"></div>
@@ -227,7 +206,7 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run5" style="width: 15%">Run</button>
-  <button id="clear5" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear5" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div> 
   
 </body>
@@ -358,9 +337,9 @@ document.getElementById("run1").addEventListener("click", function() {
   getCode(4);
 });
 
-    document.getElementById("run4").addEventListener("click", function() {
-  console.log('click4'); 
-  getCode(4);
+    document.getElementById("run5").addEventListener("click", function() {
+  console.log('click5'); 
+  getCode(5);
 });
 // document.getElementById("clear2").addEventListener("click", function() {
 //     document.getElementById("result2").innerHTML = "";
@@ -369,10 +348,6 @@ document.getElementById("run1").addEventListener("click", function() {
 // });
 
     
-     
-
-
-  
   const firebaseConfig = {
     apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
     authDomain: "cssifinal-884f2.firebaseapp.com",
@@ -419,9 +394,38 @@ firebase.auth().onAuthStateChanged((user) => {
    //call this lien to increase level by
     // increaseLevel();
 
-    
+    firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+     var data = "";
+    async function getLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+     
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+
+        if(data <1){
+          window.location.href = "progression.html";
+        }
+        document.body.style.display = "block";
+         
+        
+      }
+  }
+    getLevel();
+  }
+  else{
+    window.location.href = "index.html";
+    console.log("logged out");
+  }
+      });
 
   </script>
 
-  <script src="enforcelogin.js"></script>
+<!--   <script src="enforcelogin.js"></script> -->
 </html>

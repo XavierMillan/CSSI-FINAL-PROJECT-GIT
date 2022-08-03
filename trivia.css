@@ -12,7 +12,7 @@ html, body {
   overflow: hidden;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   animation: 
-    typing 5.5s steps(20, end),
+    typing 1.7s steps(20, end),
     blink-caret .5s step-end infinite;
 }
 

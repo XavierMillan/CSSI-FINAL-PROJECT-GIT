@@ -160,6 +160,14 @@ function signOut() {
 }
 
 function signUp(){
+  let studentClasslist = document.getElementById("student").classList.contains("active");
+  let teacherClasslist = document.getElementById("teacher").classList.contains("active");
+  let demoClasslist = document.getElementById("demo").classList.contains("active");
+  console.log(studentClasslist);
+   console.log(teacherClasslist);
+  console.log(demoClasslist);
+
+  
     console.log('sign up');
     var emailV = document.getElementById("emailSU").value;
     var password = document.getElementById("passSU").value;
@@ -168,16 +176,13 @@ function signUp(){
     //set name to local storage
     localStorage.setItem("name", name);
 
-  let studentClasslist = document.getElementById("student").classList;
-  let teacherClasslist = document.getElementById("teacher").classList + " ";
-  let demoClasslist = document.getElementById("demo").classList + " ";
-  console.log(studentClasslist);
-   console.log(teacherClasslist);
+  
+  
   let role = 'Student';
-  if(teacherClasslist.includes('active')){
+  if(teacherClasslist){
     role = 'Teacher';
   }
-  if(demoClasslist.includes('active')){
+  if(demoClasslist){
     role = 'Demo';
   }
     localStorage.setItem("role", role);

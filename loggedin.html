@@ -5,7 +5,7 @@
     <title>Logged In</title>
     <link rel="stylesheet" href="auth.css">
 </head>
-<body>
+<body style="display: none">
 
 <div class="container" id="container">
     <div class="form-container sign-in-container" id="sign-in-view">
@@ -121,6 +121,7 @@ firebase.initializeApp(firebaseConfig);
     // user = firebase.auth().currentUser;
 
         if(user) {
+          document.body.style.display = "block";
             if(!verifyEmail()){
                 document.getElementById("verified").innerHTML = "Email not verified";
             }

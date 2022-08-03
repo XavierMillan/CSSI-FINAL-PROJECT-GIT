@@ -25,34 +25,16 @@
   </script>
     <style>
         html, body {
-            height: 200%;
+            height: 210%;
             width: 100%;
             overflow: scroll;
-          text-align: center;
         }
-      .tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
+      h1,h2,h3,h4,h5,h6{
+        margin: 0 auto; width: auto; text-align: center;
+      }
+      p{
+        margin-left: 30%; margin-right: 30%; text-align: center; color: black;
+      }
         .hljs {
             background: lightgrey;
 
@@ -66,6 +48,7 @@
         color: white; 
         padding: 6.5px;
       }
+      
         .parent {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -79,7 +62,6 @@
   border: 3px solid green;
   padding: 10px;
 }
-      
     </style>
 
 </head>
@@ -110,7 +92,7 @@
 
   </header>
   
-<body style="overflow: visible">
+<body style="overflow: visible; display: none">
   <br>
   <br>
   <br>
@@ -119,9 +101,11 @@
   <h1 style="margin: 0 auto; width: auto; text-align: center;">Lesson 2: if statements</h1>
   <br>
   <br>
-  
+  <h4>Creating Conditional Statements with Variables</h4>
+<br> 
+  <p>By the end of they day, you will be able to use conditional statements to return different values to the console!  In the code example below, set the 'age' variable to your age!</p>
 <div class="parent">
-  <pre><code id="editor1" class="Javascript editor" contentEditable="true">console.log(2+4); <br>let total = 2 + 4;<br><br><br><br><br></code></pre>
+  <pre><code id="editor1" class="Javascript editor" contentEditable="true">let age=10;<br>if(age < 10){<br>  console.log("you are younger than 10!")<br>} else if (age > 10) {<br>  console.log("you are older than 10")<br>} else {<br>  console.log("you are 10!")<br>};</code></pre>
   
   <div class="results" id="result1"></div>
 
@@ -133,16 +117,13 @@
 </div>
 
 <br>
-    <h5>Activity: Grocery List</h5>
-  <p>Amy goes to the store and has decided to buy some fruit.  She has already added 5 apples, <br>
-  2 pears, and 1 turkey to the cart.</p>
-      <p>press run to double check what's in Amy's cart.</p>
-    <p>Amy has decided she would like to add 4 bananas to her cart.  Create a new variable
-      <br>called 'banana' and set it equal to 4!  Don't forget to log the new variable to the console.</p>
-  <p>Now Amy wants a 2nd turkey.  Modify the turkey variable from 2 to 1.  What happens to the output?</p>
-  <p>Challenge:Amy is really indecisive.  Add 3 hams and 6 pineapples</p>
+    <h5>Comparison Operators</h5><br>
+    <p>Comparison operators can be used to compare to values.  It is much like making an assumption (for example: apples equals carrots, apples == carrots), and then evaluating the truth of the matter (for example: do apples equal carrots?  No, apples == carrots is a <b>false</b> statement!
+    Run the code below and notice that the result confirms that your statement is <b>true</b> or <b>false</b></p>
+  <p>challenge: Try adding a '!' in front of every comparison (ex. console.log(!1==1)).  How does the result change?</p>
+  <br>
   <div class="parent">
-  <pre><code id="editor2" class="Javascript editor" contentEditable="true">let apple = 5;<br>let pear = 2;<br>let turkey = 1;<br>console.log("Amy Grocery List:");<br>console.log("apples:" + apple);<br>console.log("pears:" + pear);<br>console.log("turkeys:" + turkey);<br><br></code></pre>
+  <pre><code id="editor2" class="Javascript editor" contentEditable="true">console.log(1 === 2);<br>console.log(1 === 1);<br>console.log(1 < 1);<br>console.log(1 < 2);<br>console.log(1 >= 1);<br>console.log(1 >= 2);<br><br></code></pre>
   
   <div class="results" id="result2"></div>
 
@@ -151,13 +132,20 @@
   <br>
   <button class="btn btn-success" id="run2" style="width: 15%">Run</button>
   <button id="clear2" class="btn btn-warning" style="width: 15%">Clear</button>
+
 </div>
-<h5>Note on Naming Variables</h5>
-  <p>Variab</p>
+ 
 <br>
-  <!--   I just sent you a link to a meeting -->
+ <h5>Comparing Strings</h5><br>
+    <p>Comparison Operators can be used to compare strings, too!  Check out the example code below.  Run the code and see what happens.  The variable 'favoriteColor' is set to 'blue'.  'yourGuess' is set to 'red.'  Below the variables, an if statement checks if it is <b>true</b> that 'favoriteColor' is equal to 'yourGuess.'  Since 'blue' does <b>not equal</b> 'red,' the statement is <b>false</b>, and the code within the brackets ({}) is not executed!</p>
+  <p>Try the exercises below for additional practice!</p>  
+  
+   <p style='height:130px; overflow-y:scroll; background-color:rgb(217, 233, 255)'>
+     1.Change variable 'yourGuess' to equal 'blue.'  Run the program.  What change and why?<br><br>2.Change 'yourGuess' again; this time, to 'BLUE' in capital letters.  Run the program now.  Can you guess why the if statement evaluated to false?  <br><br> hint: it can help to replace the variable names- (yourGuess === favorite Color) to the variables' values- ('BLUE'==='blue')<br><br>3.Challenge: Try to make your own conditional statement.  Replace the value at 'favoriteColor' to your favorite color, customize a string in the console.log statement within the if statement.
+   </p>
+  <br>
  <div class="parent">
-  <pre><code id="editor3" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre><code id="editor3" class="Javascript editor" contentEditable="true">let favoriteColor='blue';<br>let yourGuess='red';<br><br>if(yourGuess === favoriteColor){<br>console.log("you guessed my favorite color!")};<br><br></code></pre>
   
   <div class="results" id="result3"></div>
 
@@ -169,9 +157,15 @@
 </div>
 
 <br>
+
+   <h5>Activity: Party Planner</h5><br>
+    <p>Carol is an event planner.  She expects 20 guests, and she currently has 10 cups and 30 plates.  She has declared these as variables.  Carol wants at least 1 cup and 1 plate for each guest.  The if statements check if Carol will have at least as many plates as she has guests (greater than or equal to, >=).  Try running the code and then try the tasks below:</p>
   
+   <p style='height:130px; overflow-y:scroll; background-color:rgb(228, 217, 255)'>
+    1. Carol has realized she actually only has 15 plates.  Change the 'plates' variable to equal 15 and run the program again.  What has changed? <br><br>2. A tornado blew over and now only 10 guests can make it!  Edit the guests variable to equal 10.  Run the program again.  Can you figure out why the if statements evaluated true? <br><br>3. CHALLENGE: Carol decided she actually wants every guest to have TWO plates.  See if you can change the plates' if statement so that the statement checks if every guest has two plates! <br>(hint: the division symbol is '/' and the multiplication symbol is '*)<br><br>4.DOUBLE CHALLENGE: Edit the variables to plan your own party.  Choose how many guests their will by and add some new party supplies (like hats or cake!)  Create some new if statements to check if you will have enough of each party supply.
+   </p><br>
  <div class="parent">
-  <pre><code id="editor4" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre><code id="editor4" class="Javascript editor" contentEditable="true">let guests = 20;<br>let plates = 30;<br>let cups = 10;<br><br>if(plates >= guests){<br>  console.log("Carol has enough plates!")<br>} else {<br>  console.log("Carol is short this many<br> plates:" + (guests - plates))<br>};<br><br>if(cups >= guests){<br>  console.log("Carol has enough cups!")<br>} else {<br>  console.log("Carol is short this many<br> cups:" + (guests - cups))<br>};</code></pre>
   
   <div class="results" id="result4"></div>
 
@@ -183,9 +177,16 @@
 </div>
 
   <br>
-  
+
+   <h5>If vs. Else vs. Else If</h5><br>
+    <p>Throughout the lesson, you've seen conditional statements such as If, Else, and Else If.  While you may have figured out what these mean, this short activity may help differentiate them!</p>
+  <p>In the terminal below, An if statement checks the comparison (1===1), if it is true, the console will log "true1"  Then, an else if statement evaluates (2===2) and returns "true2" if the statement is true, and last, the console logs 'done!'  Run the program then try the activities below:</p>
+  <br>
+  <p style='height:130px; overflow-y:scroll; background-color:rgb(228, 217, 255)'>
+  1. You may have noticed, even though 2 is equal to 2 (2 === 2), the console does not log 'true2', as it should if a conditional if statement evaluates to true.  The reason is that the term 'else' implies one or the other.  For example: John says, 'if it is sunny, bring me a hat, but if it is not sunny and it is raining, bring me an umbrella!'  In this statement, John gets a hat if it is sunny,but if it is not sunny and it is rainy, he'll get an umbrella.<br> you may be asking, what if it is sunny AND raining?  Maybe John should have said 'if it is sunny, bring me a hat and if it is raining, bring me an umbrella!'<br><br>try changing the 'else if' to 'if' and run the code again.  What happens?<br><br>2. Notice, now both 'true1' and 'true2' are logged to the console.  So what does else do?  <br> John decides he really likes umbrellas and says:'if it is sunny, bring me a hat, and if it is raining, bring me an umbrella, and if it's hailing, bring me an umbrella, and if it's cold, bring me an umbrella, and if it's overcast, bring me an umbrella...etc'  It seems like what John wants to say is 'if it is not sunny, bring me an umbrella'  <br><br> Try editing the code so that the final console.log is within an else statement (else{console.log('done')}).  Run the code.  <br><br>Notice that 'done!' is no longer logged to the console.  The program now reads: IF 1 equals 1, log 'true1', IF 2 equals 2, log 'true2', but if they are not true (ELSE), console.log('done!')
+   </p><br>
    <div class="parent">
-  <pre><code id="editor5" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre><code id="editor5" class="Javascript editor" contentEditable="true">if (1 === 1) {<br>  console.log('true1')<br>} else if (2 === 2) {<br>  console.log('true2')<br>};<br>  console.log('done!');<br></code></pre>
   
   <div class="results" id="result5"></div>
 
@@ -197,6 +198,13 @@
 </div> 
   
 </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
 
   
   <script>
@@ -236,23 +244,26 @@ function getCode(num) {
   //TODO: maybe add back
     var code = document.getElementById(editor).innerHTML;
   console.log(code);
-  // code = code.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
-// let code;
-  
-    // code = code.replace(/<div.*?>/g, "").replace(/<\/div>/g, "");
-    // code = code.replace(/<pre.*?>/g, "").replace(/<\/pre>/g, "");
-    // code = code.replace(/<code.*?>/g, "").replace(/<\/code>/g, "");
-   //comvert &gt; to > and &lt; to < and &amp; to & and &quot; to " and &apos; to "' and &nbsp; to " " and &#xA; to "\n" and &#xD; to "\r" and &#x9; to "\t"
-    code = code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#xA;/g, "\n").replace(/&#xD;/g, "\r").replace(/&#x9;/g, "\t");
+  //remove html tags before parsing and executing
+  code = code.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+    code = code.replace(/<div.*?>/g, "").replace(/<\/div>/g, "");
+    code = code.replace(/<pre.*?>/g, "").replace(/<\/pre>/g, "");
+    code = code.replace(/<code.*?>/g, "").replace(/<\/code>/g, "");
+   code = code.replace(/font.*?>/g, "").replace(/<\/font>/g, "");
+    code = code.replace(/<br>/g, "");
+    
 
-    // code = code.replace(/<br>/g, "");
-    //add new line after every } or{
-    code = code.replace(/{/g, "{\n");
-    code = code.replace(/}/g, "}\n");
-
+  //errors wehn using boolean statements
     //replace all html tags with nothing
-    code = code.replace(/<.*?>/g, "");
-    //add a new line after every ;
+    // code = code.replace(/<.*?>/g, "");
+
+  //line formatting
+  //comvert &gt; to > and &lt; to < and &amp; to & and &quot; to " and &apos; to "' and &nbsp; to " " and &#xA; to "\n" and &#xD; to "\r" and &#x9; to "\t"
+    code = code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&apos;/g, "'").replace(/&nbsp;/g, " ").replace(/&#xA;/g, "\n").replace(/&#xD;/g, "\r").replace(/&#x9;/g, "\t");
+  //add new line after every } or{
+    code = code.replace(/{/g, "{\n");
+    code = code.replace(/}/g, "}\n");  
+  //add a new line after every ;
     code = code.replace(/;/g, ";\n");
 
     code = Babel.transform(code, {'presets': ['es2015']}).code;
@@ -316,9 +327,9 @@ document.getElementById("run1").addEventListener("click", function() {
   getCode(4);
 });
 
-    document.getElementById("run4").addEventListener("click", function() {
-  console.log('click4'); 
-  getCode(4);
+    document.getElementById("run5").addEventListener("click", function() {
+  console.log('click5'); 
+  getCode(5);
 });
 // document.getElementById("clear2").addEventListener("click", function() {
 //     document.getElementById("result2").innerHTML = "";
@@ -326,7 +337,83 @@ document.getElementById("run1").addEventListener("click", function() {
 //   resizeEditor();
 // });
 
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
 
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+function increaseLevel(){
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+    async function updateLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+      var data = "";
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+      }
+      let newLevel = docRef.update({level: data+1});
+      console.log(newLevel);
+
+
+      
+  }
+    
+    updateLevel();
+    
+        }
+  else{
+    console.log("logged out");
+  }
+      });
+}
+   //call this lien to increase level by
+    // increaseLevel();
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+     console.log("logged in");
+     var data = "";
+    async function getLevel(){
+      
+      let user = firebase.auth().currentUser;
+      let userID = user.uid;
+      let docRef = db.collection("user-data").doc(userID);
+      let doc = await docRef.get();
+     
+      if(doc.exists){
+         data = doc.data().level;
+        console.log(data);
+
+        if(data <3){
+          console.log("no access");
+          window.location.href = "progression.html";
+        }
+         document.body.style.display = "block";
+        
+      }
+  }
+    getLevel();
+  }
+  else{
+    window.location.href = "index.html";
+    console.log("logged out");
+  }
+});
 
   </script>
 </html>
