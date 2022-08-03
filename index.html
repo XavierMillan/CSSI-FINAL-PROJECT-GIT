@@ -8,8 +8,8 @@
     body {
       margin: 0;
       padding: 0;
-      background-repeat: no-repeat;
       background-attachment: fixed;
+      background-repeat: no-repeat;
     }
 
     #gradient-canvas {
@@ -25,38 +25,23 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
   <link rel="stylesheet"
     href="A.fonts,,_icomoon,,_style.css+css,,_owl.carousel.min.css+css,,_bootstrap.min.css+css,,_style.css,Mcc.iq-Irt1J63.css.pagespeed.cf.67EAq9-gxU.css">
+
 </head>
 <header class="site-navbar" role="banner">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-11 col-xl-2">
-        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">Brand</a></h1>
+        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">SoC</a></h1>
       </div>
       <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
           <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
             <li class="active"><a href="index.html"><span>Home</span></a></li>
-            <li class="has-children">
-              <a href="#"><span>For Students</span></a>
-              <ul class="dropdown arrow-top">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Games</a>
-                  <ul class="dropdown">
-                    <li><a href="trivia.html">Trivia Game</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                    <li><a href="#">Menu Four</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="teachers.html"><span>For Teachers</span></a></li>
-            <li><a href="about.html"><span>About</span></a></li>
+            <li><a id='studentNav' style="display: none;" href="progression.html"><span>For Students</span></a></li>
+            <li><a id='teachersNav' style="display: none;" href="teachers.html"><span>For Teachers</span></a></li>
+            <li><a href="about.html"><span>About Us</span></a></li>
             <li><a href="forum.html"><span>Forum</span></a></li>
-            <li><a href="login.html"><span>Login</span></a></li>
+            <li><a id="account" href="login.html"><span>Login</span></a></li>
           </ul>
         </nav>
       </div>
@@ -83,17 +68,24 @@
 
   <section>
     <div class="isLoaded" style="position: absolute">
-      <canvas id="gradient-canvas" style="width:100vw;height:100vh;z-index: -9999;" width="156" height="600"
+      <canvas id="gradient-canvas" style="width:100vw;height:200vh;z-index: -9999;" width="156" height="600"
         class="isLoaded"></canvas>
       <script>
         var gradient = new Gradient()
         gradient.initGradient('#gradient-canvas');
       </script>
     </div>
-    <!-- </section> -->
 
-    <div style="position: absolute" class="center">
-      <h1 style="z-index: 9999;">Hi</h1>
+    <div id='titleScreen' style="position: fixed" class="center text-white heading">
+      <h1 style="z-index: 9999;"><span class="hello-world"></span></h1>
+      <h2>Welcome to Student-Oriented Coding, an educational website for K-5 students aimed to make learning Computer
+        Science more
+        fun.</h2>
+      <h4>Before you can get started, be sure to sign up for an account below!</h4>
+      <a id="link"href="login.html" class="btn btn-primary">
+        <h3>Sign up</h3>
+      </a>
+      <br><br>
     </div>
 
     <!--     <div style="position: absolute" class="typewriter">
@@ -107,14 +99,130 @@
     </section> -->
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
+<!--Hello World Typing Animation-->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script>
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
+    authDomain: "cssifinal-884f2.firebaseapp.com",
+    projectId: "cssifinal-884f2",
+    storageBucket: "cssifinal-884f2.appspot.com",
+    messagingSenderId: "331915175322",
+    appId: "1:331915175322:web:ab968dfdccc693e2094623",
+    measurementId: "G-LB249TWWMB"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+let word =  "";
+  
+   let uid = "";
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    let word = "Welcome " + user.displayName ;
+    console.log(word);
+    var typed = new Typed(".hello-world", {
+    strings: [word],
+    typeSpeed: 200,
+    loop: false
+  });
+    console.log(user.uid);
+    let role = "Student";
+    
+    async function getData() {
+    var user = firebase.auth().currentUser;
+    var userID = user.uid;
+    var docRef = db.collection("user-data").doc(userID);
+    var doc = await docRef.get();
+    if (doc.exists) {
+        role = doc.data().role;
+      console.log(role);
+    }
+}
+  getData();
+    // document.getElementById("studentNav").style.display = "none";
+      document.getElementById("teachersNav").style.display = "none";
+
+    console.log(role);
+if(role == "Student"){
+  console.log('student');
+  document.getElementById("studentNav").style.display = "block";
+  document.getElementById("teachersNav").style.display = "none";
+  document.getElementById('link').href = 'progression.html';
+  document.getElementById('link').innerHTML = "Student Page";
+}
+else if(role == "Demo"){
+  console.log('Demo');
+   document.getElementById("studentNav").style.display = "block";
+      document.getElementById("teachersNav").style.display = "block";
+  document.getElementById('link').href = 'progression.html';
+   document.getElementById('link').innerHTML = "Student Page";
+}
+    else if(role == "Teacher"){
+      console.log('teacher');
+       document.getElementById("studentNav").style.display = "block";
+      document.getElementById("teachersNav").style.display = "block";
+      document.getElementById('link').href = 'teachers.html';
+       document.getElementById('link').innerHTML = "Teacher Page";
+    }
+console.log("logged in");
+     
+      document.getElementById("account").href = "loggedin.html";
+      document.getElementById("account").innerHTML = '<span>My Account</span>';
+
+
+    
+
+  } else {
+    console.log("logged out");
+    word = 'Hello World!';
+    var typed = new Typed(".hello-world", {
+    strings: [word],
+    typeSpeed: 200,
+    loop: false
+  });
+     
+      document.getElementById("studentNav").style.display = "none";
+      document.getElementById("teachersNav").style.display = "none";
+  }
+});
+
+  
+  
+ 
+  function type(){
+
+
+  }  
+</script>
+
+< script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
+  <!-- <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var app = new onePageScroll({
       el: document.querySelectorAll('section'),
     });
   });
-</script>
+  // Scroll effect
+  $(document).on("scroll", function () {
+    $("scroll").css("top", Math.max(50 - 0.35 * window.scrollX) + "px");
+  });
+</script> -->
 
 </html>

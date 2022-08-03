@@ -168,9 +168,24 @@ function signUp(){
     //set name to local storage
     localStorage.setItem("name", name);
 
+  let studentClasslist = document.getElementById("student").classList;
+  let teacherClasslist = document.getElementById("teacher").classList + " ";
+  let demoClasslist = document.getElementById("demo").classList + " ";
+  console.log(studentClasslist);
+   console.log(teacherClasslist);
+  let role = 'Student';
+  if(teacherClasslist.includes('active')){
+    role = 'Teacher';
+  }
+  if(demoClasslist.includes('active')){
+    role = 'Demo';
+  }
+    localStorage.setItem("role", role);
+
     firebase.auth().createUserWithEmailAndPassword(emailV, password)
         .then(function(result) {
             // alert("Account created successfully");
+          
             return result.user.updateProfile({
             displayName: name
             });
@@ -180,6 +195,7 @@ function signUp(){
         });
     firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+      
         window.location.href = "loggedin.html";
     }
     else {
@@ -221,4 +237,42 @@ function verifyEmail(){
     }
     return true;
 }
+
+function addDocument(){
+  
+  let role = localStorage.getItem("role");
+
+  let level = 1;
+  if(role == "Teacher" || role =="Demo"){
+    level =100;
+  }
+            //get user
+            var user = firebase.auth().currentUser;
+            //get name from textfield
+            var name = user.displayName;
+            //get email from textfield
+            var email = user.email;
+            //get user id
+            var userid = user.uid;
+            //get current time
+            var currentTime = new Date().getTime();
+            //get current date
+            var currentDate = new Date(currentTime);
+            //get current date and time
+            var date = (currentDate.getMonth()+1) + "/" + currentDate.getDate() + "/" + currentDate.getFullYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+            //add document to database
+            firebase.firestore().collection("user-data").doc(userid).set({
+                name: name,
+                email: email,
+                date: date,
+                role: role,
+                level: level
+            }).then(function(){
+                //document added
+               alert("document added");
+            }).catch(function(error){
+                //error
+                console.log(error);
+            });
+        }
 

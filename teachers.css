@@ -1,0 +1,80 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* monoton-regular - latin */
+@font-face {
+  font-family: 'Monoton';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../fonts/monoton-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/monoton-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* .center {
+  left: 50%;
+  top: 25%;
+  -webkit-transform: translate(-50%, -25%);
+  transform: translate(-50%, -25%);
+  font-family: Monoton; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 26.4px;
+  text-align: center;
+} */
+
+.heading h1, h4, button{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/* 
+.mainBody{
+   overflow:scroll !important;
+}
+.rect {
+ margin-top:100px;
+/*    height: 1000px;
+  width: 800px; 
+  background-color: #ffffff;
+} */
+.content{
+  margin-top: 10%;
+  margin-left: 10%;
+  position: fixed;
+  width: 80%;
+  height:100%;
+  padding-bottom: 10rem; 
+  background-image: linear-gradient(to bottom right, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: auto;
+}
+
+.heading{
+  text-align: center;
+  align-content: center;
+}
+
+.site-navbar{
+  background-image: linear-gradient(to right, #6ec3f4, #3a3aff, #ff61ab, #E63946);
+}
+
+.card-text{
+  color:black;
+  font-family:"Montserrat", sans-serif
+}
+.content h1, .card-title{
+  font-family: "Playfair Display", serif;
+}
+
+.card{
+  margin: 2rem 2rem 2rem 2rem;
+}

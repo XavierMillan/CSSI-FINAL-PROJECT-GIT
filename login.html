@@ -144,6 +144,24 @@
             <input id="emailSU" type="email" placeholder="Email" />
             <input id="passSU" type="password" placeholder="Password" />
             <br>
+          <div id="buttons">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-light active" id="student">
+    <input type="radio" name="options"  autocomplete="off" checked> Student
+  </label>
+  <label class="btn btn-light" id="teacher">
+    <input type="radio" name="options"  autocomplete="off"> Teacher
+  </label>
+  <label class="btn btn-light">
+    <input type="radio" name="options" id="demo" autocomplete="off"> Demo
+  </label>
+</div>
+          </div>
+
+<!--           <div class="form-check">
+  
+</div> -->
+            <br>
             <button class="ghost gblack" id="signupbutton">Sign Up</button>
 <!--             <h6>or</h6>
             <button  id="googlesignupbutton">Sign Up With Google</button> -->
@@ -226,9 +244,10 @@ firebase.initializeApp(firebaseConfig);
     if(signup == "true") {
         console.log("signup true");
         // setMessage("");
+        setMessage("");
         document.getElementById("sign-in-view").style.display = "none";
         document.getElementById("sign-up-view").style.display = "block";
-        containerAuth.classList.add("right-panel-active");
+        document.getElementById('container').classList.add("right-panel-active");
     }
     //if url has the parameter signin=true, then show the sign in view
     var signin = url.searchParams.get("signin");

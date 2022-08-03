@@ -18,31 +18,16 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-11 col-xl-2">
-        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">Brand</a></h1>
+        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">SoC</a></h1>
       </div>
       <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
           <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
             <li class="active"><a href="index.html"><span>Home</span></a></li>
-            <li class="has-children">
-              <a href=""><span>For Students</span></a>
-              <ul class="dropdown arrow-top">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a></li>
-                <li><a href="#">Menu Three</a></li>
-                <li class="has-children">
-                  <a href="#">Games</a>
-                  <ul class="dropdown">
-                    <li><a href="/games/trivia/trivia.html">Trivia Game</a></li>
-                    <li><a href="#">Menu Two</a></li>
-                    <li><a href="#">Menu Three</a></li>
-                    <li><a href="#">Menu Four</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="listings.html"><span>For Teachers</span></a></li>
-            <li><a href="about.html"><span>About</span></a></li>
+            <li><a id='studentNav' style="display: hidden;" href="progression.html"><span>For Students</span></a></li>
+            <li><a id='teachersNav' style="display: hidden;" href="teachers.html"><span>For Teachers</span></a></li>
+
+            <li><a href="about.html"><span>About Us</span></a></li>
             <li><a href="forum.html"><span>Forum</span></a></li>
             <li><a href="login.html"><span>Login</span></a></li>
           </ul>
@@ -55,6 +40,7 @@
 
 </header>
 
+
 <body>
   <!--   Nav Bar -->
 
@@ -62,10 +48,10 @@
   <!--   Made a div called main body -->
   <div id="mainBody">
 
-    <!--     these icons are for toggling the navigation bar-->
+    <!--these icons are for toggling the navigation bar
     <div id="iconBox"></div>
     <img id="xIcon" onclick="toggleOff()" src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png">
-    <img id="eyeIcon" onclick="toggleOn()" src="https://cdn-icons-png.flaticon.com/512/2867/2867280.png">
+    <img id="eyeIcon" onclick="toggleOn()" src="https://cdn-icons-png.flaticon.com/512/2867/2867280.png"> -->
 
     <!-- gamestart--easy or hard mode -->
     <div id="StartTriviaGame" class='rect'>
@@ -105,6 +91,8 @@
   " onclick="restartGame()">Home</div>
         <div id="continue" class="title is-2 glow-on-hover hidden" style="color: white;margin-left: 20px;
   " onclick="continueGame()">Continue</div>
+        <div id="finish" class="title is-2 glow-on-hover hidden" style="color: white;margin-left: 20px;
+  " onclick="finish()">Finish!</div>
         <div id="triviaPoints" class="title is-2" style="color: white;margin-left: 20px;
   ">Points: 0/3</div>
 
@@ -113,10 +101,18 @@
   </div>
 
   <!--   game end --Incomplete. (was thinking roulette wheel with prizes (points)-->
+
+  <div id='secondBody' style='position:absolute; top:27%;'>
+    <div id="leaderboard">
+      <h2 class="title is-2">Leaderboard</h2>
+      <h3 id="score0"></h3>
+      <h3 id="score1"></h3>
+      <h3 id="score2"></h3>
+      <h3 id="score3"></h3>
+      <h3 id="score4"></h3>
+    </div>
   </div>
-
-
-
+  <script src="https://www.gstatic.com/firebasejs/8.0/firebase.js"></script>
   <script src="trivia.js" defer></script>
   <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
 </body>

@@ -1,0 +1,403 @@
+html, body {
+  height: 200%;
+  width: 100%;
+  background-image:url("https://ak.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg");
+  background-size:cover;
+}
+
+
+#mainBody {
+  height:25%;
+}
+
+.hidden {
+  display:none!important;
+}
+
+
+.rect {
+    color:white;
+    font: 1.3rem Inconsolata, monospace;
+    display:flex;
+    flex-direction:column;
+    text-align: center;
+    text-shadow: 0 0 5px #C8C8C8;
+   width: 1100px;
+  height: 550px;
+   border: 10px solid #bd0000;
+  border-radius: 20px;
+   padding: 25px;
+   margin: 25px;
+/*    justify-content:center; */
+   position: absolute;
+   top: 5%;
+   left: 50%;
+   margin-left: -39%;
+      }
+.rect:hover{
+  cursor: cell;
+}
+
+#startPizzaGame {
+  background-image: url('imgs/pizza.png');
+  background-size:cover;
+}
+
+.pizzaButs{
+  display: flex;
+  justify-content: space-between;
+}
+#trivia{
+  color:white;
+}
+#question{
+  color:white;
+}
+#answer{
+  color:white;
+}
+
+
+.button{
+  position:absolute;
+  background-color:transparent;
+  border:transparent;
+  width:140px;
+  height:70px;
+}
+
+.button a{
+  color:white;
+  font-family:Helvetica, sans-serif;
+  font-weight:bold;
+  font-size:36px;
+  text-align: center;
+  text-decoration:none;
+  background-color:#ff0a0a;
+  display:block;
+  position:absolute;
+  padding:20px 40px;
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.button a:active{
+  top:10px;
+  color:#990000;
+  background-image:url('imgs/pizzaButs.jpeg');
+  background-position: center center;
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+}
+
+.button:after{
+  content:"";
+  height:100%;
+  width:100%;
+  padding:4px;
+  position: absolute;
+  bottom:-15px;
+  left:-4px;
+  z-index:-1;
+  background-color:#2B1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#pizzaTitle{
+  border: 7px solid #9e0000;
+  border-radius: 20px;
+  width:70%;
+  margin-left:150px;
+  background-image:url('imgs/check.jpg');
+}
+
+#pizzaGame1{
+  background-image:url("https://img.freepik.com/premium-vector/modern-cafe-interior-empty-no-people-restaurant-with-furniture-coffee-point-fat_48369-25335.jpg?");
+  background-size:cover;
+  position:absolute;
+}
+#pizzaGame2{
+  background-image:url("https://img.freepik.com/premium-vector/modern-cafe-interior-empty-no-people-restaurant-with-furniture-coffee-point-fat_48369-25335.jpg?");
+  background-size:cover;
+  position:absolute;
+}
+.blockLet{
+  background-color:#90a300;
+  border-radius: 15px;
+  border: 2px solid #eeff00;
+  padding: 5px;
+  height:50px;
+  overflow-y: scroll;
+  width:45%;
+  display:flex;
+}
+.blockConst{
+    background-color:#9d0606;
+  border-radius: 15px;
+  border: 2px solid #ffb066;
+  padding: 5px;
+  overflow-y: scroll;
+  height:50px;
+  width:45%;
+  display:flex;
+}
+
+.blockEdit{
+    background-color:#1887bf;
+  border-radius: 15px;
+  border: 2px solid #cdccff;
+  padding: 5px;
+  height:50px;
+  width:70%;
+  overflow: scroll;
+  display:flex;
+}
+
+#modify{
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  height:50;
+  align-items: center;
+}
+
+#transcript{
+  display:flex;
+  justify-content: space-around;
+  height:400px;
+
+  width:500px;
+  max-width:500px;
+  left:50%;
+  top:35px;
+  align-content: center;
+  position:absolute;
+  flex-direction: column;
+
+}
+#fullPizza{
+   width:400px;
+  height:350px;
+  display:grid;
+}
+#fullPizza2{
+   width:400px;
+  height:350px;
+  display:grid;
+}
+#order{
+  margin-left:630px;
+  margin-top:-250px;
+  position:absolute;
+  display:grid;
+ 
+}
+#bubble,#bubbleText{
+  grid-column: 1;
+  grid-row: 1;
+}
+#bubble{order:1;
+       margin:auto;}
+#bubbleText{
+  position:absolute;
+  order:2;
+  overflow-y: scroll;
+overflow-x: hidden;
+
+  height:265px;
+  width:185px;
+  max-width: 185px;
+  top:275px;
+  left:70px;
+  white-space: normal; 
+           }
+#crust, #plate,#cheese,#sauce,#cheeseImg,#pepperoni,#p1,#p2,#p3,#p4,#p5{
+  grid-column: 1;
+  grid-row: 1;
+}
+#crust2, #plate2,#cheese2,#sauce2,#cheeseImg2,#pepperoni2,#p12,#p22,#p32,#p42,#p52{
+  grid-column: 1;
+  grid-row: 1;
+}
+.circle{
+  border-radius: 50%;
+  margin:auto;
+}
+
+#pepperoni{
+  background-color: transparent;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:6;
+
+}
+#pepperoni2{
+  background-color: transparent;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:6;
+
+}
+#p1{width:50px;
+  height:50px;
+    margin-top:20px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p2{width:50px;
+  height:50px;
+    margin-top:40px;
+    margin-left:30px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p3{width:50px;
+  height:50px;
+    margin-top:35px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p4{width:50px;
+  height:50px;
+    margin-top:-150px;
+    position:absolute;
+    margin-left:120px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p5{
+  width:50px;
+  height:50px;
+  position:absolute;
+    margin-top:-90px;
+  margin-left:175px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+
+#p12{width:50px;
+  height:50px;
+    margin-top:20px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p22{width:50px;
+  height:50px;
+    margin-top:40px;
+    margin-left:30px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p32{width:50px;
+  height:50px;
+    margin-top:35px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p42{width:50px;
+  height:50px;
+    margin-top:-150px;
+    position:absolute;
+    margin-left:120px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+#p52{
+  width:50px;
+  height:50px;
+  position:absolute;
+    margin-top:-90px;
+  margin-left:175px;
+   background-image: url('imgs/pepperoni.png');
+    background-size: cover;}
+
+#cheese {
+  background-color: #ff9500;
+  opacity:.5;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:5;
+
+}
+#cheeseImg {
+  background-image:url('https://thumbs.dreamstime.com/b/close-up-cheese-pizza-texture-118717380.jpg');
+  background-size: cover;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:4;
+
+}
+#cheese2 {
+  background-color: #ff9500;
+  opacity:.5;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:5;
+
+}
+#cheeseImg2 {
+  background-image:url('https://thumbs.dreamstime.com/b/close-up-cheese-pizza-texture-118717380.jpg');
+  background-size: cover;
+  width:250px;
+  height:250px;
+  border-radius: 50%;
+  order:4;
+
+}
+#sauce {
+  background-color: red;
+
+  width:275px;
+  height:275px;
+  border-radius: 50%;
+  order:3;
+
+}
+#crust {
+  background-color: tan;
+/*   position:absolute; */
+  width:300px;
+  height:300px;
+  border-radius: 50%;
+  order:2;
+
+}
+#sauce2 {
+  background-color: red;
+
+  width:275px;
+  height:275px;
+  border-radius: 50%;
+  order:3;
+
+}
+#crust2 {
+  background-color: tan;
+/*   position:absolute; */
+  width:300px;
+  height:300px;
+  border-radius: 50%;
+  order:2;
+
+}
+#plate{
+/*   position: absolute; */
+  width:400px;
+  height:350px;
+  order:1;
+}
+#plate2{
+/*   position: absolute; */
+  width:400px;
+  height:350px;
+  order:1;
+}

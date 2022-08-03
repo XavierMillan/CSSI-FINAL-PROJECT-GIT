@@ -47,7 +47,7 @@
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">
-                <h1>Venge</h1>
+                <h1>Student Oriented Programming</h1>
                 <p>Account Details</p>
                 <button class="ghost" id="authHome" onclick="goToLoggedIn()">Auth Home</button>
                 <br>
@@ -253,7 +253,7 @@ firebase.initializeApp(firebaseConfig);
             // document.getElementById("currentemail").innerHTML = "hi";
             document.getElementById("currentname").innerHTML = user.displayName;
             document.getElementById("currentemail").innerHTML = user.email;
-            addDocument();
+            // addDocument();
             console.log('hello');
             // queryUser('hello');
 
@@ -533,34 +533,7 @@ firebase.initializeApp(firebaseConfig);
 
 
         // add document to  with user id and name
-        function addDocument(){
-            //get user
-            var user = firebase.auth().currentUser;
-            //get name from textfield
-            var name = user.displayName;
-            //get email from textfield
-            var email = user.email;
-            //get user id
-            var userid = user.uid;
-            //get current time
-            var currentTime = new Date().getTime();
-            //get current date
-            var currentDate = new Date(currentTime);
-            //get current date and time
-            var date = currentDate.getDate() + "/" + (currentDate.getMonth()+1) + "/" + currentDate.getFullYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-            //add document to database
-            firebase.firestore().collection("user-data-venge").doc(userid).set({
-                name: name,
-                email: email,
-                date: date
-            }).then(function(){
-                //document added
-                console.log("document added");
-            }).catch(function(error){
-                //error
-                console.log(error);
-            });
-        }
+        
 
         // function addDocument(userId, name, email, password) {
         //     var db = firebase.firestore();

@@ -1,6 +1,11 @@
 html, body {
-  height: 100%;
+  height: 200%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to bottom right, #6ec3f4,#3a3aff, #ff61ab, #E63946);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .typewriter{
@@ -20,10 +25,10 @@ html, body {
 /* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: #00ff1e; }
+  50% { border-color: #ff61ab; }
 }
 
-.navbar {
+/* .navbar {
   height:10%;
   background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
   background-size: cover;
@@ -36,13 +41,13 @@ html, body {
   background-image:url("https://cdn.wallpapersafari.com/25/17/Qk6syj.jpg");
   background-size:cover;
   height:100%;
-}
+} */
 
 .hidden {
   display:none!important;
 }
 
-#xIcon {
+/* #xIcon {
   position:absolute;
   height:25px;
   width:auto;
@@ -67,7 +72,7 @@ html, body {
   background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
   width: 85px;
   height: 40px;  
-}
+} */
 
 .rect {
     color:white;
@@ -77,7 +82,7 @@ html, body {
     text-align: center;
     background-color: black;
     background-image: radial-gradient(
-    rgba(0, 150, 0, 0.75), black 120%
+    rgba(0, 0, 200, 0.75), black 120%
   );
     text-shadow: 0 0 5px #C8C8C8;
    width: 800px;
@@ -87,7 +92,7 @@ html, body {
    margin: 25px;
 /*    justify-content:center; */
    position: absolute;
-   top: 20%;
+   top: 5%;
    left: 50%;
    margin-left: -29%;
       }
@@ -109,7 +114,7 @@ html, body {
 
 .glow-on-hover:before {
     content: '';
-    background: linear-gradient(45deg, #00ff4c, #aeff00, #ffc800, #53b800, #ffde0a, #3dad00, #70e000, #ffd642, #08b43c);
+    background: linear-gradient(45deg,  #6ec3f4,#3a3aff, #ff61ab, #E63946);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -125,7 +130,7 @@ html, body {
 }
 
 .glow-on-hover:active {
-    color: #11ff00
+    color: #ff61ab
 }
 
 .glow-on-hover:active:after {

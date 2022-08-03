@@ -2,55 +2,124 @@
 <html>
 
 <head>
-  <title>Home</title>
-  <script src="Gradient.js"></script>
+  <title>For Teachers</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-
-    #gradient-canvas {
-      --gradient-color-1: #6ec3f4;
-      --gradient-color-2: #3a3aff;
-      --gradient-color-3: #ff61ab;
-      --gradient-color-4: #E63946;
-    }
   </style>
   <meta name="description" content="">
   <!--         <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
   <link rel="stylesheet"
     href="A.fonts,,_icomoon,,_style.css+css,,_owl.carousel.min.css+css,,_bootstrap.min.css+css,,_style.css,Mcc.iq-Irt1J63.css.pagespeed.cf.67EAq9-gxU.css">
+  <link rel="stylesheet" href="teachers.css">
 </head>
-  <
+
 <header class="site-navbar" role="banner">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-11 col-xl-2">
-        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">Brand</a></h1>
+        <h1 class="mb-0 site-logo"><a href="index.html" class="text-white mb-0">SoC</a></h1>
       </div>
       <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
           <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
             <li class="active"><a href="index.html"><span>Home</span></a></li>
-            <li class="has-children">
-              <a href="#"><span>For Students</span></a>
-              <ul class="dropdown arrow-top">
-                <li><a href="#">Menu One</a></li>
-                <li><a href="#">Menu Two</a>
+            <li><a id='studentNav' style="display: hidden;" href="progression.html"><span>For Students</span></a></li>
+            <li><a id='teachersNav' style="display: hidden;" href="teachers.html"><span>For Teachers</span></a></li>
+
+            <li><a href="about.html"><span>About Us</span></a></li>
+            <li><a href="forum.html"><span>Forum</span></a></li>
+            <li><a href="login.html"><span>Login</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#"
+          class="site-menu-toggle js-menu-toggle text-white active"><span class="icon-menu h3"></span></a></div>
+    </div>
+  </div>
+
+</header>
+
+<body>
+  <section>
+    <div class='content'>
+      <div class="heading">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>What is Student-Oriented Coding (SoC)?</h1>
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text">Student-Oriented Coding is an educational website whose purpose is to inspire and
+                    educate K-5 students to learn about Computer Science principles. With easy-to-play games and
+                    mini-lessons, it makes learning CS fun and accessible for students.</p>
+                  <a href="about.html" class="btn btn-primary">Learn more about us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card pl-3 pr-3">
+                <h3 class="pt-3 card-title">CS education still remains inaccessible to many students</h3>
+                <div class="card-text pb-3">
+                  <ul class="text-left">
+                    <li>Only 26% of national elementary schools offer computer programming classes.<sup><a
+                          href="https://nap.nationalacademies.org/read/25912/chapter/8#100">1</a></sup>
+                    </li>
+                    <li>Almost 75% of California schools with the highest percentage of underrepresented students of
+                      color don't offer any CS classes.<sup><a
+                          href="https://www.laschoolreport.com/report-computer-science-unavailable-to-many-minority-kids/">2</a></sup>
+                    </li>
+                    <li>Research shows that learning computer science at a young age improves computational thinking and
+                      problem-solving skills.</li>
+                    <li>Around 30% of K-8 schools offer foundational computer science in across 19 states.<sup><a
+                          href="https://advocacy.code.org/2021_state_of_cs.pdf">3</a></sup>
+                    </li>
+                    <li>Underrepresented groups, including English language learners, students with disabilities, and
+                      economically disadvantaged students, are less likely to have access to CS curriculum.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <h3 class="pt-3 card-title">How SoC can help</h3>
+                <div class="card-text pb-3">
+                  <h5><em>Made for students. By students.</em></h5>
+                  <p style="color:black;" class="ml-3 mr-3">Our mini-lessons and fun games encourages students
+                    to learn important
+                    computer
+                    science principles such as variables and basic JavaScript. Use them in your classrooms to help
+                    bridge the
+                    gap in CS education. <br></br>Feel free to contact us or post in the forum if you have any
+                    questions.</p>
+                  <a href="forum.html" class="btn btn-primary">Contact us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
+<!-- <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var app = new onePageScroll({
       el: document.querySelectorAll('section'),
     });
   });
+</script> -->
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script>
+
 </script>
 
 </html>
