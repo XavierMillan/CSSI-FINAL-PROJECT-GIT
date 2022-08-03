@@ -1,7 +1,9 @@
 html,body{
   width:100%;
   height:100%;
-  background-color:#ffb8b8;
+  background-image: linear-gradient(to top, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
+  background-attachment: fixed;
+  background-repeat: no-repeat;  
   display:flex;
   justify-content: center;
   flex-direction: column;

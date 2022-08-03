@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-attachment: fixed;
+      background-attachment: absolute;
       background-repeat: no-repeat;
     }
 
@@ -82,7 +82,7 @@
         Science more
         fun.</h2>
       <h4 id="signupprompt">Before you can get started, be sure to sign up for an account below!</h4>
-      <a id="link"href="login.html?signup=true" class="btn btn-primary">
+      <a id="link" href="login.html?signup=true" class="btn btn-primary">
         <h3>Sign up</h3>
       </a>
       <br><br>
@@ -101,10 +101,7 @@
 </body>
 <!--Hello World Typing Animation-->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-  
-</script>
-
+<!-- here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -113,7 +110,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script>
-  
+
   const firebaseConfig = {
     apiKey: "AIzaSyDeaWpE9wc6VvPEilrEAqhEnjKo8ik1Stw",
     authDomain: "cssifinal-884f2.firebaseapp.com",
@@ -127,100 +124,104 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   const db = firebase.firestore();
+  // to here
+  let word = "";
 
-let word =  "";
-  
-   let uid = "";
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    let word = "Welcome " + user.displayName ;
-    console.log(word);
-    var typed = new Typed(".hello-world", {
-    strings: [word],
-    typeSpeed: 200,
-    loop: false
-  });
-    console.log(user.uid);
-    let role = "Student";
-    
-    async function getData() {
-    var user = firebase.auth().currentUser;
-    var userID = user.uid;
-    var docRef = db.collection("user-data").doc(userID);
-    var doc = await docRef.get();
-    if (doc.exists) {
-        role = doc.data().role;
-      console.log(role);
+  let uid = "";
 
-    // document.getElementById("studentNav").style.display = "none";
-      // document.getElementById("teachersNav").style.display = "none";
+  // here
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      //to here
+      let word = "Welcome " + user.displayName;
+      console.log(word);
+      var typed = new Typed(".hello-world", {
+        strings: [word],
+        typeSpeed: 200,
+        loop: false
+      });
+      // here
+      console.log(user.uid);
+      let role = "Student";
 
-    console.log(role);
+      async function getData() {
+        var user = firebase.auth().currentUser;
+        var userID = user.uid;
+        var docRef = db.collection("user-data").doc(userID);
+        var doc = await docRef.get();
+        if (doc.exists) {
+          role = doc.data().role;
+          console.log(role);
 
-if(role == "Demo"){
-  console.log('Demo');
-   document.getElementById("studentNav").style.display = "block";
-      document.getElementById("teachersNav").style.display = "block";
-  document.getElementById('link').href = 'progression.html';
-   document.getElementById('link').innerHTML = "Student Page";
-}
-else if(role == "Teacher"){
-      console.log('teacher');
-       document.getElementById("studentNav").style.display = "block";
-      document.getElementById("teachersNav").style.display = "block";
-      document.getElementById('link').href = 'teachers.html';
-       document.getElementById('link').innerHTML = "Teacher Page";
-    }
-    else{
-      console.log('student');
-  document.getElementById("studentNav").style.display = "block";
-  document.getElementById("teachersNav").style.display = "none";
-  document.getElementById('link').href = 'progression.html';
-  document.getElementById('link').innerHTML = "Student Page";
-    }
-    }
-}
-  getData();    
-    document.getElementById('signupprompt').innerHTML = 'Start Exploring!!';
-console.log("logged in");
-     
+          // document.getElementById("studentNav").style.display = "none";
+          // document.getElementById("teachersNav").style.display = "none";
+
+          console.log(role);
+
+          if (role == "Demo") {
+            console.log('Demo');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+          else if (role == "Teacher") {
+            console.log('teacher');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'teachers.html';
+            document.getElementById('link').innerHTML = "Teacher Page";
+          }
+          else {
+            console.log('student');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "none";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+        }
+      }
+      getData();
+      // to here
+      document.getElementById('signupprompt').innerHTML = 'Start Exploring!!';
+      console.log("logged in");
+
+      // here
       document.getElementById("account").href = "loggedin.html";
       document.getElementById("account").innerHTML = '<span>My Account</span>';
 
 
-    
 
-  } else {
-    console.log("logged out");
-    word = 'Hello World!';
-    var typed = new Typed(".hello-world", {
-    strings: [word],
-    typeSpeed: 200,
-    loop: false
-  });
-     
+
+    } else {
+      console.log("logged out");
+      // to here
+      word = 'Hello World!';
+      var typed = new Typed(".hello-world", {
+        strings: [word],
+        typeSpeed: 200,
+        loop: false
+      });
+      // here
       document.getElementById("studentNav").style.display = "none";
       document.getElementById("teachersNav").style.display = "none";
-  }
-});
+    }
+  });
 
-  
-   
+
+
 </script>
+<!-- to here -->
 
 < script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 </script>
-  <!-- <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var app = new onePageScroll({
-      el: document.querySelectorAll('section'),
+  <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var app = new onePageScroll({
+        el: document.querySelectorAll('section'),
+      });
     });
-  });
-  // Scroll effect
-  $(document).on("scroll", function () {
-    $("scroll").css("top", Math.max(50 - 0.35 * window.scrollX) + "px");
-  });
-</script> -->
+  </script>
 
 </html>

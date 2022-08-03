@@ -1,10 +1,12 @@
 html, body {
   height: 200%;
   width: 100%;
-  background-image:url("https://ak.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg");
-  background-size:cover;
+/*   background-image:url("https://ak.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg");
+  background-size:cover; */
+  background-image: linear-gradient(to bottom, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
-
 
 #mainBody {
   height:25%;

@@ -56,6 +56,9 @@
           grid-column-gap: 0px;
           grid-row-gap: 0px;
         }
+      .preMargin{
+        margin-bottom:0;
+      }
       .center {
   margin: auto;
   width: 50%;
@@ -104,8 +107,10 @@
   <h4>Creating Conditional Statements with Variables</h4>
 <br> 
   <p>By the end of they day, you will be able to use conditional statements to return different values to the console!  In the code example below, set the 'age' variable to your age!</p>
+  
 <div class="parent">
-  <pre><code id="editor1" class="Javascript editor" contentEditable="true">let age=10;<br>if(age < 10){<br>  console.log("you are younger than 10!")<br>} else if (age > 10) {<br>  console.log("you are older than 10")<br>} else {<br>  console.log("you are 10!")<br>};</code></pre>
+  
+  <pre class='preMargin'><code id="editor1" class="Javascript editor" contentEditable="true">let age=10;<br>if(age < 10){<br>  console.log("you are younger than 10!")<br>} else if (age > 10) {<br>  console.log("you are older than 10")<br>} else {<br>  console.log("you are 10!")<br>};</code></pre>
   
   <div class="results" id="result1"></div>
 
@@ -123,7 +128,7 @@
   <p>challenge: Try adding a '!' in front of every comparison (ex. console.log(!1==1)).  How does the result change?</p>
   <br>
   <div class="parent">
-  <pre><code id="editor2" class="Javascript editor" contentEditable="true">console.log(1 === 2);<br>console.log(1 === 1);<br>console.log(1 < 1);<br>console.log(1 < 2);<br>console.log(1 >= 1);<br>console.log(1 >= 2);<br><br></code></pre>
+  <pre class='preMargin'><code id="editor2" class="Javascript editor" contentEditable="true">console.log(1 === 2);<br>console.log(1 === 1);<br>console.log(1 < 1);<br>console.log(1 < 2);<br>console.log(1 >= 1);<br>console.log(1 >= 2);<br><br></code></pre>
   
   <div class="results" id="result2"></div>
 
@@ -145,7 +150,7 @@
    </p>
   <br>
  <div class="parent">
-  <pre><code id="editor3" class="Javascript editor" contentEditable="true">let favoriteColor='blue';<br>let yourGuess='red';<br><br>if(yourGuess === favoriteColor){<br>console.log("you guessed my favorite color!")};<br><br></code></pre>
+  <pre class='preMargin'><code id="editor3" class="Javascript editor" contentEditable="true">let favoriteColor='blue';<br>let yourGuess='red';<br><br>if(yourGuess === favoriteColor){<br>console.log("you guessed my favorite color!")};<br><br></code></pre>
   
   <div class="results" id="result3"></div>
 
@@ -165,7 +170,7 @@
     1. Carol has realized she actually only has 15 plates.  Change the 'plates' variable to equal 15 and run the program again.  What has changed? <br><br>2. A tornado blew over and now only 10 guests can make it!  Edit the guests variable to equal 10.  Run the program again.  Can you figure out why the if statements evaluated true? <br><br>3. CHALLENGE: Carol decided she actually wants every guest to have TWO plates.  See if you can change the plates' if statement so that the statement checks if every guest has two plates! <br>(hint: the division symbol is '/' and the multiplication symbol is '*)<br><br>4.DOUBLE CHALLENGE: Edit the variables to plan your own party.  Choose how many guests their will by and add some new party supplies (like hats or cake!)  Create some new if statements to check if you will have enough of each party supply.
    </p><br>
  <div class="parent">
-  <pre><code id="editor4" class="Javascript editor" contentEditable="true">let guests = 20;<br>let plates = 30;<br>let cups = 10;<br><br>if(plates >= guests){<br>  console.log("Carol has enough plates!")<br>} else {<br>  console.log("Carol is short this many<br> plates:" + (guests - plates))<br>};<br><br>if(cups >= guests){<br>  console.log("Carol has enough cups!")<br>} else {<br>  console.log("Carol is short this many<br> cups:" + (guests - cups))<br>};</code></pre>
+  <pre class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">let guests = 20;<br>let plates = 30;<br>let cups = 10;<br><br>if(plates >= guests){<br>  console.log("Carol has enough plates!")<br>} else {<br>  console.log("Carol is short this many<br> plates:" + (guests - plates))<br>};<br><br>if(cups >= guests){<br>  console.log("Carol has enough cups!")<br>} else {<br>  console.log("Carol is short this many<br> cups:" + (guests - cups))<br>};</code></pre>
   
   <div class="results" id="result4"></div>
 
@@ -186,7 +191,7 @@
   1. You may have noticed, even though 2 is equal to 2 (2 === 2), the console does not log 'true2', as it should if a conditional if statement evaluates to true.  The reason is that the term 'else' implies one or the other.  For example: John says, 'if it is sunny, bring me a hat, but if it is not sunny and it is raining, bring me an umbrella!'  In this statement, John gets a hat if it is sunny,but if it is not sunny and it is rainy, he'll get an umbrella.<br> you may be asking, what if it is sunny AND raining?  Maybe John should have said 'if it is sunny, bring me a hat and if it is raining, bring me an umbrella!'<br><br>try changing the 'else if' to 'if' and run the code again.  What happens?<br><br>2. Notice, now both 'true1' and 'true2' are logged to the console.  So what does else do?  <br> John decides he really likes umbrellas and says:'if it is sunny, bring me a hat, and if it is raining, bring me an umbrella, and if it's hailing, bring me an umbrella, and if it's cold, bring me an umbrella, and if it's overcast, bring me an umbrella...etc'  It seems like what John wants to say is 'if it is not sunny, bring me an umbrella'  <br><br> Try editing the code so that the final console.log is within an else statement (else{console.log('done')}).  Run the code.  <br><br>Notice that 'done!' is no longer logged to the console.  The program now reads: IF 1 equals 1, log 'true1', IF 2 equals 2, log 'true2', but if they are not true (ELSE), console.log('done!')
    </p><br>
    <div class="parent">
-  <pre><code id="editor5" class="Javascript editor" contentEditable="true">if (1 === 1) {<br>  console.log('true1')<br>} else if (2 === 2) {<br>  console.log('true2')<br>};<br>  console.log('done!');<br></code></pre>
+  <pre class='preMargin'><code id="editor5" class="Javascript editor" contentEditable="true">if (1 === 1) {<br>  console.log('true1')<br>} else if (2 === 2) {<br>  console.log('true2')<br>};<br>  console.log('done!');<br></code></pre>
   
   <div class="results" id="result5"></div>
 
@@ -196,7 +201,22 @@
   <button class="btn btn-success" id="run5" style="width: 15%">Run</button>
   <button id="clear5" class="btn btn-warning" style="width: 15%">Clear</button>
 </div> 
+  <br>
+  <h4>Knowledge Test!</h4>
+  <br>
+  <p>Create your own if, if, else statement, and log to the console 'true' [console.log("true")] if the statement is true!  Make the conditionals so that TWO comparisons evaluate to true (this means two 'true's should log to the console).</p>
+   <div class="parent">
+  <pre class='preMargin'><code id="editor6" class="Javascript editor" contentEditable="true">if (1 === 1){<br>  console.log('true')<br>} if (2 === 2) {<br>  console.log('true')<br>} else {<br>  console.log('true')<br>};<br></code></pre>
   
+  <div class="results" id="result6"></div>
+
+</div>
+<div style="margin: 0 auto; width: 656px; text-align: center;">
+  <br>
+  <button class="btn btn-success" id="run6" style="width: 15%">Run</button>
+  <button class="btn btn-success" id="grade" style="width: 15%">Grade</button>
+<!--   <button id="clear6" class="btn btn-warning" style="width: 15%">Clear</button> -->
+</div>
 </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.9.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
@@ -221,7 +241,7 @@ function resizeEditor() {
     resizeEditor();
 
     
-    
+    let errorBool = false;
 function getCode(num) {
   console.log(num);
   let result = "result"+num;
@@ -291,10 +311,13 @@ function getCode(num) {
     var myInterpreter = new Interpreter(code, initFunc);
 
         myInterpreter.run();
+      errorBool = false;
+      // console.log('executed');
     }
     catch (e) {
         document.getElementById(result).innerHTML = e.toString();
         console.log('result',e);
+      errorBool = true;
     }
 
 }
@@ -331,6 +354,45 @@ document.getElementById("run1").addEventListener("click", function() {
   console.log('click5'); 
   getCode(5);
 });
+
+      document.getElementById("run6").addEventListener("click", function() {
+  console.log('click6'); 
+  getCode(6);
+});
+
+    document.getElementById("grade").addEventListener("click", function () {
+    console.log('click6');
+    getCode(6);
+      setTimeout(() => {
+    console.log(errorBool);
+    console.log(grade());
+    if(!errorBool && grade()){
+      increaseLevel()
+      alert("level completed");
+    }
+      }, 1000);
+    
+  });
+
+
+  function grade(){
+    var code = document.getElementById('editor6').innerHTML;
+    let countConsole = (code.match(/console.log/g) || []).length
+    var consolex = document.getElementById('result6').innerHTML;
+    console.log(consolex);
+    console.log((consolex.match(/true/g) || []));
+    let countTrue = (consolex.match(/true/g) || []).length;
+    console.log(countTrue);
+    // let countConsole = (code.match(/console.log/g) || []).length;
+    if(countTrue ==2 && countConsole>=3){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+    
 // document.getElementById("clear2").addEventListener("click", function() {
 //     document.getElementById("result2").innerHTML = "";
 //   document.getElementById("editor2").innerHTML = "";
@@ -366,9 +428,10 @@ firebase.auth().onAuthStateChanged((user) => {
          data = doc.data().level;
         console.log(data);
       }
+      if(data == 3){
       let newLevel = docRef.update({level: data+1});
       console.log(newLevel);
-
+      }
 
       
   }

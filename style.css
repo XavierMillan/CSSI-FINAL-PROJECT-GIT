@@ -3,7 +3,7 @@ html, body {
   height: 100%;
 }
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: transparent;
 }
 
@@ -15,13 +15,13 @@ html, body {
   width: .5px;
   height: .5px;
 }
-
+ */
 #titleScreen {
   margin-top:15%;
   width:50%;
   height:100%;
   position:absolute;
-  overflow:scroll;
+/*   overflow:scroll; */
 }
 
 /* monoton-regular - latin */

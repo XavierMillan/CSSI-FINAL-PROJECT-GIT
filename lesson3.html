@@ -42,6 +42,9 @@
 
             height: 100%;
         }
+      .preMargin{
+        margin-bottom:0;
+      }
       .results{
         background: black; 
         margin-right: 30%;  
@@ -105,7 +108,7 @@
   <p>There are two main types of loops 'for' and 'while' loops. 'for' loops have the variable you are using to track the number of repetitions in the head of the loop on the other hand 'while' loops head is more akin to that of an if statement where there is a single boolean expression where the loop will continue to run while that condition is true.</p>
 <br>
 <div class="parent">
-  <pre><code id="editor1" class="Javascript editor" contentEditable="true">/*For Loop*/ <br>for(let i = 0; i < 4; i++){ <br>console.log(i);<br>} <br>/*While Loop*/ <br>let j = 0; <br>while(j<4){ <br>console.log(j*10); <br>j++; </br>}<br></code></pre>
+  <pre class='preMargin'><code id="editor1" class="Javascript editor" contentEditable="true">/*For Loop*/ <br>for(let i = 0; i < 4; i++){ <br>    console.log(i);<br>} <br>/*While Loop*/ <br>let j = 0; <br>while(j<4){ <br>    console.log(j*10); <br>    j++; </br>}<br></code></pre>
   
   <div class="results" id="result1"></div>
 
@@ -113,13 +116,18 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run1" style="width: 15%">Run</button>
-  <button id="clear1" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear1" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
   
 <br>
-  
+  <h4>All strings have an index systsem corresponding to the position of every character</h4>
+  <br>
+  <p>
+    The numbering of indices starts at zero for the beggining character for an example run the code below!
+  </p>
+  <br>
   <div class="parent">
-  <pre><code id="editor2" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre class='preMargin'><code id="editor2" class="Javascript editor" contentEditable="true">let myString = "Hi, Bob!"; <br><br>for(let i =0; i < myString.length; i++){ <br>    console.log(myString.charAt(i)); <br>} <br><br><br><br></code></pre>
   
   <div class="results" id="result2"></div>
 
@@ -127,13 +135,19 @@
 <div style="margin: 0 auto; width: 656px; text-align: center;">
   <br>
   <button class="btn btn-success" id="run2" style="width: 15%">Run</button>
-  <button id="clear2" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--   <button id="clear2" class="btn btn-warning" style="width: 15%">Clear</button> -->
 </div>
 
 <br>
+  <h4>You can also us loop to perform mathematical operations</h4>
+  <br>
+  <p>
+    Since multiplication is just repeated addition we can use a loop for that!
+  </p>
+  <br>
   
  <div class="parent">
-  <pre><code id="editor3" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre class='preMargin'><code id="editor3" class="Javascript editor" contentEditable="true">/*Change x to make 30 print to the screen*/<br>/*Remember the loop starts at 0 not 1!*/<br>let myNum = 5; <br>for(let i = 0; i < x; i++){ <br>    myNum= myNum +5; <br>} <br>console.log(myNum); <br><br></code></pre>
   
   <div class="results" id="result3"></div>
 
@@ -147,7 +161,7 @@
 <br>
   
  <div class="parent">
-  <pre><code id="editor4" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
   
   <div class="results" id="result4"></div>
 
@@ -161,7 +175,7 @@
   <br>
   
    <div class="parent">
-  <pre><code id="editor5" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+  <pre class='preMargin'><code id="editor5" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
   
   <div class="results" id="result5"></div>
 
@@ -338,9 +352,10 @@ firebase.auth().onAuthStateChanged((user) => {
          data = doc.data().level;
         console.log(data);
       }
+      if(data == 5){
       let newLevel = docRef.update({level: data+1});
       console.log(newLevel);
-
+      }
 
       
   }

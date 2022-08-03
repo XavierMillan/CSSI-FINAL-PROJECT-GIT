@@ -15,7 +15,7 @@
 
 
     
-    let defaultPizza={
+let defaultPizza={
   'pepperoni':[false,'red'],
   'cheese':[false,'orange'],
   'sauce':[false,'red'],

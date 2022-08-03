@@ -3,18 +3,20 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: scroll;
+   background-image: linear-gradient(to left, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .content{
   margin-top: 10%;
   margin-left: 10%;
-  position: fixed;
   width: 80%;
   height:100%;
-  background-image: linear-gradient(to left, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
+/*   background-image: linear-gradient(to left, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
   background-attachment: fixed;
-  background-repeat: no-repeat;
-  overflow: auto;
-  padding-bottom: 10rem;
+  background-repeat: no-repeat; */
+  padding-bottom: 2rem;
 }
 .about-heading{
   text-align: center;
@@ -29,10 +31,10 @@ html, body {
   width: auto;
   margin-bottom: 20px;
 }
-
+/* 
 .site-navbar{
   background-image: linear-gradient(to right, #6ec3f4, #3a3aff, #ff61ab, #E63946);
-}
+} */
 
 .card{
   margin: 2rem 2rem 2rem 2rem;
@@ -40,8 +42,17 @@ html, body {
 }
 .card-text{
   color:black;
-  font-family:"Montserrat", sans-serif
 }
-.content h1, .card-title{
-  font-family: "Playfair Display", serif;
+/* monoton-regular - latin */
+@font-face {
+  font-family: 'Monoton';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../fonts/monoton-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/monoton-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+footer{
+  
 }

@@ -3,7 +3,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to bottom right, #6ec3f4,#3a3aff, #ff61ab, #E63946);
+  background-image: linear-gradient(to left, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
@@ -28,51 +28,12 @@ html, body {
   50% { border-color: #ff61ab; }
 }
 
-/* .navbar {
-  height:10%;
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
-  background-size: cover;
-}
-.hero {
-  background-image:url("https://cdn.wallpapersafari.com/25/17/Qk6syj.jpg");
-  background-size:cover;
-}
-#mainBody {
-  background-image:url("https://cdn.wallpapersafari.com/25/17/Qk6syj.jpg");
-  background-size:cover;
-  height:100%;
-} */
+
 
 .hidden {
   display:none!important;
 }
 
-/* #xIcon {
-  position:absolute;
-  height:25px;
-  width:auto;
-  margin-top:7px;
-  margin-left: 97%;
-}
-
-#eyeIcon {
-  position:absolute;
-  height:27px;
-  width:auto;
-  margin-top:7px;
-  margin-left: 94%;
-}
-
-#iconBox {
-  position:absolute;
-  margin-left: 93.5%;
-  border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px;
-  opacity:.5;
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT-AtG5G1nnYhzLkjr5ooPEtP_PupmEa9BzA&usqp=CAU");
-  width: 85px;
-  height: 40px;  
-} */
 
 .rect {
     color:white;
@@ -159,7 +120,20 @@ html, body {
     100% { background-position: 0 0; }
 }
 
-
+.floating { 
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
 
 .triviaButs{
   margin:auto;
@@ -174,4 +148,50 @@ html, body {
 }
 #answer{
   color:white;
+}
+
+#leaderboard{
+  display:flex;
+  flex-direction: column;
+/*   text-align:center; */
+  width:50%;
+}
+#secondBody{
+  width:100%;
+}
+
+#leaderboardTitle{
+  display:flex;
+  align-self:center;
+  font-size: 4.2rem;
+  animation: pulsate 1.5s infinite alternate;  
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em;
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #bc13fe,
+            0 0 0.8rem #bc13fe,
+            0 0 2.8rem #bc13fe,
+            inset 0 0 1.3rem #bc13fe; 
+
+  font-family: "Sacramento", sans-serif;
+ 
+  
+}
+.l {
+  margin-left:30%;
+}
+
+.neonText {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #bc13fe,
+    0 0 82px #bc13fe,
+    0 0 92px #bc13fe,
+    0 0 102px #bc13fe,
+    0 0 151px #bc13fe;
 }
