@@ -101,15 +101,15 @@
       <div class="col-12 col-md-10 d-none d-xl-block">
         <nav class="site-navigation position-relative text-right" role="navigation">
           <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-            <li class="active"><a href="index.html"><span style="color: black">Home</span></a></li>
-            <li><a id='studentNav' style="display: hidden;" href="progression.html"><span style="color: black">For
+            <li ><a href="index.html"><span style="color: black">Home</span></a></li>
+            <li class="active"><a id='studentNav' style="display: hidden;" href="progression.html"><span style="color: black">For
                   Students</span></a></li>
             <li><a id='teachersNav' style="display: hidden;" href="teachers.html"><span style="color: black">For
                   Teachers</span></a></li>
 
             <li><a href="about.html"><span style="color: black">About Us</span></a></li>
             <li><a href="forum.html"><span style="color: black">Forum</span></a></li>
-            <li><a href="login.html"><span style="color: black">Login</span></a></li>
+            <li><a href="login.html" id="account"><span style="color: black">Login</span></a></li>
           </ul>
         </nav>
       </div>
@@ -527,6 +527,51 @@
         }
       }
       getLevel();
+
+  async function getData() {
+        var user = firebase.auth().currentUser;
+        var userID = user.uid;
+        var docRef = db.collection("user-data").doc(userID);
+        var doc = await docRef.get();
+        if (doc.exists) {
+          role = doc.data().role;
+          console.log(role);
+
+          // document.getElementById("studentNav").style.display = "none";
+          // document.getElementById("teachersNav").style.display = "none";
+
+          console.log(role);
+
+          if (role == "Demo") {
+            console.log('Demo');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+          else if (role == "Teacher") {
+            console.log('teacher');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'teachers.html';
+            document.getElementById('link').innerHTML = "Teacher Page";
+          }
+          else {
+            console.log('student');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "none";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+        }
+      }
+      getData();
+      console.log(document.body.style.display);
+      document.body.style.display = "block";
+      console.log(document.body.style.display);
+      document.getElementById("account").href = "loggedin.html";
+      document.getElementById("account").innerHTML = '<span style="color: black">My Account</span>';
+      
     }
     else {
       window.location.href = "index.html";

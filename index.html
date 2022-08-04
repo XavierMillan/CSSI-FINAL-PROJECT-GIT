@@ -62,7 +62,7 @@
                 <a href="#">About</a>
             </div>
         </div> -->
-  <!--         <script type="text/javascript" src="mobile.js"></script> -->
+<!--           <script type="text/javascript" src="mobile.js"></script> -->
   <!-- 
   <section id="s1" name="page1" class="one-page-scroll--page" style="transform: translateY(0%); transition: transform 600ms ease-out 0s;" > -->
 
@@ -163,21 +163,21 @@
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
             document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            document.getElementById('link').innerHTML = "<h3>Student Page</h3>";
           }
           else if (role == "Teacher") {
             console.log('teacher');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
             document.getElementById('link').href = 'teachers.html';
-            document.getElementById('link').innerHTML = "Teacher Page";
+            document.getElementById('link').innerHTML = "<h3>Teacher Page</h3>";
           }
           else {
             console.log('student');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "none";
             document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            document.getElementById('link').innerHTML = "<h3>Student Page</h3>";
           }
         }
       }

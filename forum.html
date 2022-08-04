@@ -138,8 +138,10 @@
         <button type="button" class="btn btn-primary" id="submit1">Post</button>
       </form>
     </div>
-    <div class="card-body" style="display: none;" id="image">
-      <form>
+
+    
+    <div class="card-body" style="display: none; margin: auto;" id="image">
+      <form style="text-align: center;">
         <div class="form-group">
           <label for="postTitle2">Post Title</label>
           <input type="text" class="form-control" id="postTitle2" placeholder="Title">
@@ -147,7 +149,7 @@
 
         <div class="form-group">
           <label for="imageUpload">Upload an Image</label>
-          <input type="file" class="form-control-file" id="imageUpload">
+          <input type="file" style="margin-left: 36% !important;" class="form-control-file" id="imageUpload" accept="image/png, image/gif, image/jpeg, image/jpg">
         </div>
 
         <label>Categories</label>
@@ -561,7 +563,7 @@
           <br>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
-         <button type="button" class="btn btn-primary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
+         <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
         
         ${deleteButtonHTML}
         <p class="card-text"><small class="text-muted">${timediff}</small></p>

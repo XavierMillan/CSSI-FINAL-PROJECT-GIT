@@ -155,6 +155,7 @@
       let role = "Student";
 
       async function getData() {
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         var user = firebase.auth().currentUser;
         var userID = user.uid;
         var docRef = db.collection("user-data").doc(userID);
@@ -172,22 +173,23 @@
             console.log('Demo');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
-            document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            // document.getElementById('link').href = 'progression.html';
+            // document.getElementById('link').innerHTML = "Student Page";
           }
           else if (role == "Teacher") {
             console.log('teacher');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
-            document.getElementById('link').href = 'teachers.html';
-            document.getElementById('link').innerHTML = "Teacher Page";
+            // document.getElementById('link').href = 'teachers.html';
+            // document.getElementById('link').innerHTML = "Teacher Page";
           }
           else {
             console.log('student');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "none";
-            document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            window.location.href = "index.html";
+            // document.getElementById('link').href = 'progression.html';
+            // document.getElementById('link').innerHTML = "Student Page";
           }
         }
       }

@@ -215,8 +215,9 @@ input {
 /*   #22e4ac */
 /*   #08b3e5 */
     background: #6ec3f4;
-    background: -webkit-linear-gradient(to right,#6ec3f4, #ff61ab, #E63946);
-    background: linear-gradient(to right, #6ec3f4, #ff61ab, #E63946);
+/*     background: -webkit-linear-gradient(to right,#6ec3f4, #ff61ab, #E63946);
+    background: linear-gradient(to right, #6ec3f4, #ff61ab, #E63946); */
+  background: linear-gradient(to bottom right, #6ec3f450, #3a3aff50, #ff61ab50, #E6394650);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;

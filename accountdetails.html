@@ -282,6 +282,7 @@ firebase.initializeApp(firebaseConfig);
             }
             else {
                 document.getElementById("page").style.display = "block";
+              document.getElementById("reauthModal").style.display = "none";
             }
         }else {
             document.getElementById("message").innerHTML = "Not logged in";

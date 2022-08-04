@@ -26,7 +26,7 @@
             <li class=""><a href="index.html" style="color:black;"><span>Home</span></a></li>
             <li class="active"><a id='studentNav' style="color:black;" href="progression.html"><span>For
                   Students</span></a></li>
-            <li><a id='teachersNav' style="color:black;" href="teachers.html"><span>For
+            <li><a id='teachersNav' style="color:black; display: none;" href="teachers.html"><span>For
                   Teachers</span></a></li>
             <li><a href="about.html" style="color:black;"><span>About Us</span></a></li>
             <li><a href="forum.html" style="color:black;"><span>Forum</span></a></li>
@@ -205,6 +205,57 @@
       }
 
       getLevel();
+
+
+      let role = "Student";
+
+      async function getData() {
+        var user = firebase.auth().currentUser;
+        var userID = user.uid;
+        var docRef = db.collection("user-data").doc(userID);
+        var doc = await docRef.get();
+        if (doc.exists) {
+          role = doc.data().role;
+          console.log(role);
+
+          // document.getElementById("studentNav").style.display = "none";
+          // document.getElementById("teachersNav").style.display = "none";
+
+          console.log(role);
+
+          if (role == "Demo") {
+            console.log('Demo');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+          else if (role == "Teacher") {
+            console.log('teacher');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'teachers.html';
+            document.getElementById('link').innerHTML = "Teacher Page";
+          }
+          else {
+            console.log('student');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "none";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+        }
+      }
+      getData();
+      console.log(document.body.style.display);
+      document.body.style.display = "block";
+      console.log(document.body.style.display);
+      document.getElementById("account").href = "loggedin.html";
+      document.getElementById("account").innerHTML = '<span>My Account</span>';
+
+    
+
+      
       document.body.style.display = "block";
     }
     else {
