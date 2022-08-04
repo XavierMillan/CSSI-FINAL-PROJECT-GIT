@@ -585,12 +585,22 @@
 
 <script>
      var getUrl = window.location;
-          var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + 'forum.html';
+  var baseUrl ="";
+if(getUrl.includes('github')){
+ baseUrl= getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + "/forum.html";
+}
+  else{
+    baseUrl= getUrl.protocol + "//" + getUrl.host + "/forum.html";
+  }
+  
+          
           console.log(baseUrl);
           let shareUrl = `${baseUrl}?postid=1659557191300.I4PKXme0uqXYmvEymdTMj1sARy33`;
           console.log(shareUrl);
     document.getElementById('helplink').href = shareUrl;
 </script>
+
+  
   
 <!--   <script src="enforcelogin.js"></script> -->
 

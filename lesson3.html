@@ -576,9 +576,14 @@ i++;
 
   <script>
 //https://cssi-main.xavim1.repl.co/forum.html?postid=1659583747660.I4PKXme0uqXYmvEymdTMj1sARy33
-    
-     var getUrl = window.location;
-          var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + 'forum.html';
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!");
+       var baseUrl ="";
+if(getUrl.includes('github')){
+ baseUrl= getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + "/forum.html";
+}
+  else{
+    baseUrl= getUrl.protocol + "//" + getUrl.host + "/forum.html";
+  }
           console.log(baseUrl);
           let shareUrl = `${baseUrl}?postid=1659583747660.I4PKXme0uqXYmvEymdTMj1sARy33`;
           console.log(shareUrl);
