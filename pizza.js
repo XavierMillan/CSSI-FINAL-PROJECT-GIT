@@ -69,7 +69,8 @@ let colorCoords={
 let colors=['red','blue','purple','lime','green','yellow','pink','orange'];
 
 function help(){
-  document.querySelector('#finishedB').classList.remove('hidden')
+  document.querySelector('#doneB').classList.remove('hidden');
+  document.querySelector('#doneB2').classList.remove('hidden');
 };
 //getting all answer HTML elements for the multiple choice
 let answers=document.querySelectorAll('#answer')

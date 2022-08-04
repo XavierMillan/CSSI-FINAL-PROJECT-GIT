@@ -25,10 +25,12 @@
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
-    .card{
+
+    .card {
       border-radius: 1rem !important;
     }
-    p{
+
+    p {
       font-weight: normal;
       color: black;
     }
@@ -120,26 +122,26 @@
         </div>
 
         <label>Categories</label>
-<br>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript1" value="Javascript">
-  <label class="form-check-label" for="inlineRadio1">Javascript</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp1" value="Lesson Help">
-  <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random1" value="Random">
-  <label class="form-check-label" for="inlineRadio3">Random</label>
-</div>
+        <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript1" value="Javascript">
+          <label class="form-check-label" for="inlineRadio1">Javascript</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp1" value="Lesson Help">
+          <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random1" value="Random">
+          <label class="form-check-label" for="inlineRadio3">Random</label>
+        </div>
         <br>
         <br>
         <button type="button" class="btn btn-primary" id="submit1">Post</button>
       </form>
     </div>
 
-    
+
     <div class="card-body" style="display: none; margin: auto;" id="image">
       <form style="text-align: center;">
         <div class="form-group">
@@ -149,23 +151,24 @@
 
         <div class="form-group">
           <label for="imageUpload">Upload an Image</label>
-          <input type="file" style="margin-left: 36% !important;" class="form-control-file" id="imageUpload" accept="image/png, image/gif, image/jpeg, image/jpg">
+          <input type="file" style="margin-left: 36% !important;" class="form-control-file" id="imageUpload"
+            accept="image/png, image/gif, image/jpeg, image/jpg">
         </div>
 
         <label>Categories</label>
-<br>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript2" value="Javascript">
-  <label class="form-check-label" for="inlineRadio1">Javascript</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp2" value="Lesson Help">
-  <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random2" value="Random">
-  <label class="form-check-label" for="inlineRadio3">Random</label>
-</div>
+        <br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript2" value="Javascript">
+          <label class="form-check-label" for="inlineRadio1">Javascript</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp2" value="Lesson Help">
+          <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random2" value="Random">
+          <label class="form-check-label" for="inlineRadio3">Random</label>
+        </div>
         <br>
         <br>
         <div class="progress" id="progressdiv" style="display: none">
@@ -184,8 +187,8 @@
   <!-- Modal -->
 
   <div class="modal fade" id="postDetailModal" tabindex="-1" role="dialog" aria-labelledby="postDetailModalTitle"
-    aria-hidden="true" style="z-index: 9999;" >
-    <div  class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+    aria-hidden="true" style="z-index: 9999;">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content" style="border-radius: 1rem !important;">
         <div class="modal-header">
           <h5 class="modal-title" id="postDetailModalTitle">Post Title</h5>
@@ -232,7 +235,7 @@
   </section>
 
 
-<br>
+  <br>
   <br>
   <br>
   <br>
@@ -276,8 +279,8 @@
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
 
-// firebase.initializeApp(firebaseConfig);
-//   const auth = firebase.auth();
+  // firebase.initializeApp(firebaseConfig);
+  //   const auth = firebase.auth();
   const db = firebase.firestore();
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -302,22 +305,22 @@
             console.log('Demo');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
-            document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            // document.getElementById('link').href = 'progression.html';
+            // document.getElementById('link').innerHTML = "Student Page";
           }
           else if (role == "Teacher") {
             console.log('teacher');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "block";
-            document.getElementById('link').href = 'teachers.html';
-            document.getElementById('link').innerHTML = "Teacher Page";
+            // document.getElementById('link').href = 'teachers.html';
+            // document.getElementById('link').innerHTML = "Teacher Page";
           }
           else {
             console.log('student');
             document.getElementById("studentNav").style.display = "block";
             document.getElementById("teachersNav").style.display = "none";
-            document.getElementById('link').href = 'progression.html';
-            document.getElementById('link').innerHTML = "Student Page";
+            // document.getElementById('link').href = 'progression.html';
+            // document.getElementById('link').innerHTML = "Student Page";
           }
         }
       }
@@ -337,7 +340,7 @@
     }
   });
 
-  
+
 </script>
 
 <script type="text/javascript">
@@ -345,16 +348,22 @@
   //what happens after logged in
   firebase.auth().onAuthStateChanged(function (user) {
 
-    if (user && user.emailVerified) {
+    // if (user && user.emailVerified) {
+    //   console.log("logged in");
+    //   console.log(user.email);
+    //   document.getElementById("newPostCard").style.display = "block";
+    //   document.getElementById("newComment").style.display = "block";
+    // }
+    // else if (user) {
+    //   document.getElementById("messagePane").innerHTML = "To post you must verify your email";
+    //   document.getElementById("newPostCard").style.display = "none";
+    //   document.getElementById("newComment").style.display = "none";
+    // }
+    if (user) {
       console.log("logged in");
       console.log(user.email);
       document.getElementById("newPostCard").style.display = "block";
       document.getElementById("newComment").style.display = "block";
-    }
-    else if (user) {
-      document.getElementById("messagePane").innerHTML = "To post you must verify your email";
-      document.getElementById("newPostCard").style.display = "none";
-      document.getElementById("newComment").style.display = "none";
     }
     else {
       console.log("logged out");
@@ -445,18 +454,18 @@
     //     })
     // }
 
-  async function deleteComments(postid) {
-    let db = firebase.firestore();
-  console.log("delete comments from deleted post");
-    // let user = firebase.auth().currentUser;
-    const querySnapshot = await firebase.firestore()
+    async function deleteComments(postid) {
+      let db = firebase.firestore();
+      console.log("delete comments from deleted post");
+      // let user = firebase.auth().currentUser;
+      const querySnapshot = await firebase.firestore()
         .collectionGroup('comments')
         .get()
 
       if (!querySnapshot.empty) {
         console.log("not empty");
         for (let doc of querySnapshot.docs) {
-          if(doc.data().postid == postid){
+          if (doc.data().postid == postid) {
             db.collection("comments").doc(doc.id).delete();
             // db.collection("comments").doc(doc.id).delete();
             // doc.update({email: user.email});
@@ -464,8 +473,8 @@
             console.log("comment deleted");
           }
         }
-      } 
-}
+      }
+    }
 
 
 
@@ -512,6 +521,12 @@
           let imageurl = doc.data().imageurl;
           let category = doc.data().category;
           let deleteButtonHTML = ``;
+          var getUrl = window.location;
+          var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+          console.log(baseUrl);
+          let shareUrl = `${baseUrl}?postid=${docid}`;
+          console.log(shareUrl);
+          //https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}
 
           if (firebase.auth().currentUser) {
             if (firebase.auth().currentUser.uid == doc.data().uid) {
@@ -521,7 +536,7 @@
             console.log(firebase.auth().currentUser.uid, doc.data().uid);
             console.log(deleteButtonHTML);
           }
-//https://cssi-main.xavim1.repl.co/forum.html?postid=
+          //https://cssi-main.xavim1.repl.co/forum.html?postid=
 
           if (imageurl.length < 10) {
             var xmlString = `
@@ -535,7 +550,7 @@
         <p class="card-text">${content}</p>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
-        <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
+        <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('${shareUrl}');">Share</button>
         ${deleteButtonHTML}
         <br>
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
@@ -563,7 +578,7 @@
           <br>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
-         <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
+         <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('${shareUrl}');">Share</button>
         
         ${deleteButtonHTML}
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
@@ -584,7 +599,7 @@
 
 
 
-      }
+        }
         // return posts;
         let openModal = document.getElementsByClassName('openmodal');
         console.log(openModal.length);
@@ -603,24 +618,26 @@
             //  console.log(docId);
 
           });
-          
+
         }
-        
-          var url = new URL(window.location.href);
-    var postidparam = url.searchParams.get("postid");
-    if(postidparam != null && postidparam.length > 5) {
-      console.log(postidparam);
-        setModal(postidparam);
-         el = document.getElementById('open');
-if (el.onclick) {
-   el.onclick();
-} else if (el.click) {
-   el.click();
-}
-      
-    }
-       
-        
+
+        var url = new URL(window.location.href);
+        var postidparam = url.searchParams.get("postid");
+        console.log(postidparam);
+        if (postidparam != null && postidparam.length > 5) {
+          console.log(postidparam);
+          setModal(postidparam);
+          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+          el = document.getElementById('open');
+          if (el.onclick) {
+            el.onclick();
+          } else if (el.click) {
+            el.click();
+          }
+
+        }
+
+
 
 
         let deleteButtons = document.getElementsByClassName('delete');
@@ -715,10 +732,10 @@ if (el.onclick) {
               
             </div>
       */
-   
 
 
-  setModal = async (docid) => {
+
+    setModal = async (docid) => {
       const querySnapshot = await firebase.firestore()
         .collection("posts")
         .doc(docid)
@@ -775,7 +792,7 @@ if (el.onclick) {
       }
     }
 
-function deleteComment(docid, post) {
+    function deleteComment(docid, post) {
       console.log(docid);
       firebase.firestore().collection("comments").doc(docid).delete()
         .then(function () {
@@ -815,7 +832,7 @@ function deleteComment(docid, post) {
             console.log(deleteButtonComHTML);
           }
 
-          
+
           // console.log(doc.data().timestamp);
           console.log(doc.data().upvotes);
           let commentContact = doc.data().user + " - " + doc.data().email;
@@ -908,6 +925,12 @@ function deleteComment(docid, post) {
     //   document.getElementById("newPostCard").style.display ="none";
     // }
   });
+
+  var getUrl = window.location;
+  var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  console.log(baseUrl + '?postid=');
+
+  //https://cssi-main.xavim1.repl.co/forum.html?postid=dateinmilliseconds-uid
 
 
 </script>

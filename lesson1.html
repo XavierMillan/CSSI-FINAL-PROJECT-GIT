@@ -120,6 +120,8 @@
 
 </header>
 
+  
+
 <body style="overflow: visible; display: none;">
   <br>
   <br>
@@ -130,7 +132,7 @@
   <h1 style="margin: 0 auto; width: auto; text-align: center;">Lesson 1: Variables</h1>
   <br>
   <div style="margin: 0 auto; width: 656px; text-align: center;">
- <a href="https://cssi-main.xavim1.repl.co/forum.html?postid=1659557191300.I4PKXme0uqXYmvEymdTMj1sARy33"><button class="btn btn-primary" id="help" style="width: 20%" >Need Help</button></a>
+ <a id="helplink" href="https://cssi-main.xavim1.repl.co/forum.html?postid=1659557191300.I4PKXme0uqXYmvEymdTMj1sARy33"><button class="btn btn-primary" id="help" style="width: 20%" >Need Help</button></a>
   </div>
   <br>
   <h4>There are 4 main data types in Javascript String, Number, Boolean, and Null</h4>
@@ -581,6 +583,15 @@
 
 </script>
 
+<script>
+     var getUrl = window.location;
+          var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + 'forum.html';
+          console.log(baseUrl);
+          let shareUrl = `${baseUrl}?postid=1659557191300.I4PKXme0uqXYmvEymdTMj1sARy33`;
+          console.log(shareUrl);
+    document.getElementById('helplink').href = shareUrl;
+</script>
+  
 <!--   <script src="enforcelogin.js"></script> -->
 
 </html>
