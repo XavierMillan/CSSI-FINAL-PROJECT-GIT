@@ -585,8 +585,10 @@
 
 <script>
      var getUrl = window.location;
-  var baseUrl ="";
-if(getUrl.includes('github')){
+ let urlString = getUrl + "";
+    console.log(urlString)
+            var baseUrl ="";
+if(urlString.includes('github')){
  baseUrl= getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + "/forum.html";
 }
   else{

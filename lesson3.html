@@ -577,8 +577,11 @@ i++;
   <script>
 //https://cssi-main.xavim1.repl.co/forum.html?postid=1659583747660.I4PKXme0uqXYmvEymdTMj1sARy33
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!");
-       var baseUrl ="";
-if(getUrl.includes('github')){
+     var getUrl = window.location;
+     let urlString = getUrl + "";
+      console.log(urlString)
+            var baseUrl ="";
+if(urlString.includes('github')){
  baseUrl= getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + "/forum.html";
 }
   else{
