@@ -25,10 +25,10 @@
     hljs.initHighlightingOnLoad();
     hljs.initLineNumbersOnLoad();
   </script>
-  <style>
+ <style>
     html,
     body {
-      height: 200%;
+      height: 210%;
       width: 100%;
       overflow: scroll;
     }
@@ -59,10 +59,6 @@
       height: 100%;
     }
 
-    .preMargin {
-      margin-bottom: 0;
-    }
-
     .results {
       background: black;
       margin-right: 30%;
@@ -76,6 +72,10 @@
       grid-template-rows: 1fr;
       grid-column-gap: 0px;
       grid-row-gap: 0px;
+    }
+
+    .preMargin {
+      margin-bottom: 0;
     }
 
     .center {
@@ -183,7 +183,7 @@
   <div style="margin: 0 auto; width: 656px; text-align: center;">
     <br>
     <button class="btn btn-success" id="run3" style="width: 15%">Run</button>
-    <button id="clear3" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--     <button id="clear3" class="btn btn-warning" style="width: 15%">Clear</button> -->
   </div>
 
   <br>
@@ -193,10 +193,10 @@
     activties!</p>
   <br>
   <p style='height:130px; overflow-y:scroll; background-color:rgb(217, 233, 255)'>
-    1. After running the code, you will notice five greetings are displayed in the console. The greeting variable ('hello') followed by the value of i. In for loop, the value of i starts at one ( let i = 1; ). Then, the conditional statement asserts that while it is true that i is less than or equal to the number of students in Sally's class, the content of the for loop will run ( i <= numberOfStudents; ).  Finally, after each run of the for loop's content, the value of i will increase by 1 ( i += 1).<br></p>
+    1. After running the code, you will notice five greetings are displayed in the console. The greeting variable ('hello') followed by the value of i. In for loop, the value of i starts at one ( let i = 1; ). Then, the conditional statement asserts that while it is true that i is less than or equal to the number of students in Sally's class, the content of the for loop will run ( i <= numberOfStudents; ).  Finally, after each run of the for loop's content, the value of i will increase by 1 ( i += 1).<br>Try changing the 1 in (i += 1) to 2!  Run the code again, what happens?<br><br>2. Go a head and change the 2 back to a 1 from the previous step.  Now, try changing Sally's number of students to 30! (hint: the number of students is stored in the numberOfStudents variable)<br><br>3. Sally no longer wants to say 'hello!'  Can you edit the greeting variable to a new phrase of your choosing?  Try running the program. <br><br>4. CHALLENGE: Sally wants to log a different phrase to the console for every other student.  Can you use another conditional statement within the for loop to log a different phrase to the console for every other student? (ex. say 'hello' on odd numbers and 'hi' on even numbers).  </p>
   <div class="parent">
     <pre
-      class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">let numberOfStudents = 5;<br>let greeting = 'hello!';<br><br>for (let i = 1; i <= numberOfStudents; i += 1) {<br>  console.log('greeting' + i)<br>};<br><br><br><br></code></pre>
+      class='preMargin'><code id="editor4" class="Javascript editor" contentEditable="true">let numberOfStudents = 5;<br>let greeting = 'hello!';<br><br>for (let i = 1; i <= numberOfStudents; i += 1) {<br>  console.log('greeting' + i)<br>}<br><br><br><br></code></pre>
 
     <div class="results" id="result4"></div>
 
@@ -204,14 +204,19 @@
   <div style="margin: 0 auto; width: 656px; text-align: center; padding-bottom:2rem;">
     <br>
     <button class="btn btn-success" id="run4" style="width: 15%">Run</button>
-    <button id="clear4" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--     <button id="clear4" class="btn btn-warning" style="width: 15%">Clear</button> -->
   </div>
 
+<!--   Im going to do another activity practicing a while loop here -->
+  
   <br>
-
+<h4>Knowledge Test</h4>
+  <p>create a for statement so that the phrase 'for' logs to the console 5 times.  Then, make a while loop so that the phrase 'while' logs to the console 3 times!  Remember to use brackets, and refer to the previous exercises for a refresher on the format of loops.</p>
+  
   <div class="parent">
     <pre
-      class='preMargin'><code id="editor5" class="Javascript editor" contentEditable="true">console.log("hi"); <br><br><br><br><br><br></code></pre>
+      class='preMargin'><code id="editor5" class="Javascript editor" contentEditable="true"><br><br><br><br><br><br><br><br></code></pre>
+<!--     for ( i = 0; i < 5; i++) {<br>console.log('for')<br>}<br>let i = 0;<br>while (i < 3) {<br>  console.log('while');<br>i++;<br>}<br><br><br><br> -->
 
     <div class="results" id="result5"></div>
 
@@ -219,7 +224,8 @@
   <div style="margin: 0 auto; width: 656px; text-align: center; padding-bottom:2rem;">
     <br>
     <button class="btn btn-success" id="run5" style="width: 15%">Run</button>
-    <button id="clear5" class="btn btn-warning" style="width: 15%">Clear</button>
+<!--     <button id="clear5" class="btn btn-warning" style="width: 15%">Clear</button> -->
+    <button class="btn btn-success" id="grade" style="width: 15%">Grade</button>
   </div>
 
 </body>
@@ -259,7 +265,7 @@
     // resizeEditor();
 
 
-
+let errorBool = false;
     function getCode(num) {
       console.log(num);
       let result = "result" + num;
@@ -327,10 +333,11 @@
       };
       try {
         var myInterpreter = new Interpreter(code, initFunc);
-
+      errorBool = false;
         myInterpreter.run();
       }
       catch (e) {
+        errorBool = true;
         document.getElementById(result).innerHTML = e.toString();
         console.log('result', e);
       }
@@ -367,8 +374,56 @@
 
     document.getElementById("run5").addEventListener("click", function () {
       console.log('click5');
-      getCode(4);
+      getCode(5);
     });
+
+
+document.getElementById("grade").addEventListener("click", function () {
+    console.log('click5');
+    getCode(5);
+    setTimeout(() => {
+      console.log(errorBool);
+      console.log(grade());
+      if (!errorBool && grade()) {
+        increaseLevel()
+        alert("level completed");
+      }
+    }, 1000);
+
+  });
+
+
+    /* sample solution:
+for ( i = 0; i < 5; i++) {
+console.log('for')
+}
+let i = 0;
+while (i < 3) {
+  console.log('while');
+i++;
+}
+
+
+    */
+  function grade() {
+    var code = document.getElementById('editor5').innerHTML;
+    code = code.toLowerCase();
+    let countConsoleWhile = (code.match(/while/g) || []).length;
+     let countConsoleFor = (code.match(/for/g) || []).length;
+    
+    var consolex = document.getElementById('result5').innerHTML;
+    consolex = consolex.toLowerCase();
+    let countResultWhile = (consolex.match(/while/g) || []).length;
+     let countResultFor = (consolex.match(/for/g) || []).length;
+    // let countConsole = (code.match(/console.log/g) || []).length;
+    if (countConsoleWhile >= 2 && countConsoleFor >= 2 && countResultWhile == 3 && countResultFor == 5) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+    
     // document.getElementById("clear2").addEventListener("click", function() {
     //     document.getElementById("result2").innerHTML = "";
     //   document.getElementById("editor2").innerHTML = "";

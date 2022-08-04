@@ -26,27 +26,27 @@ function changeCardView(location,remove1){
 
 */
 
-let docid =10+"";
-let uid= 1111+"";
-let title = "hello";
-let user ="xavi";
-let email = "xavmillan@gmail.com";
-let content = "jkqasmsa";
-let timestamp = "111222333";
+// let docid =10+"";
+// let uid= 1111+"";
+// let title = "hello";
+// let user ="xavi";
+// let email = "xavmillan@gmail.com";
+// let content = "jkqasmsa";
+// let timestamp = "111222333";
 
-var xmlString = `
-<br>
-<div class="card" style="width: 60%; margin-left: 20%;" id="${docid}" data-uid="${uid}">
-  <div class="card-body">
-    <h5 class="card-title">${title}</h5>
-    <small class="text-muted">${user} - ${email}</small>
-    <p class="card-text">${content}</p>
-    <button type="button" class="btn btn-primary">Comments</button>
-    <br>
-    <small class="text-muted">${timestamp}</small>
-  </div>
-</div>
-`;
+// var xmlString = `
+// <br>
+// <div class="card" style="width: 60%; margin-left: 20%;" id="${docid}" data-uid="${uid}">
+//   <div class="card-body">
+//     <h5 class="card-title">${title}</h5>
+//     <small class="text-muted">${user} - ${email}</small>
+//     <p class="card-text">${content}</p>
+//     <button type="button" class="btn btn-primary">Comments</button>
+//     <br>
+//     <small class="text-muted">${timestamp}</small>
+//   </div>
+// </div>
+// `;
 
 // var d1 = document.getElementById('posts');
 // d1.insertAdjacentHTML('afterbegin', xmlString);

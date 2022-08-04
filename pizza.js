@@ -68,7 +68,9 @@ let colorCoords={
 };
 let colors=['red','blue','purple','lime','green','yellow','pink','orange'];
 
-
+function help(){
+  document.querySelector('#finishedB').classList.remove('hidden')
+};
 //getting all answer HTML elements for the multiple choice
 let answers=document.querySelectorAll('#answer')
 
@@ -84,6 +86,8 @@ function getCustomer(){
   document.getElementById('getCustomerB').classList.add('hidden')
   document.getElementById('startOrderB').classList.remove('hidden')
   document.getElementById('bubble').classList.remove('hidden')
+  customerPizza=defaultPizza;
+  yourPizza=defaultPizza;
   for (const food in customerPizza) {
     let yes=[ `It should have ${food}.  `,`I want it to have ${food}.  `,`Give me some ${food}! `]
     let no=[`I don't want ${food}.  `,`can I skip the ${food}? `, `please no ${food}! `]

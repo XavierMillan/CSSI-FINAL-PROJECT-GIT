@@ -25,6 +25,13 @@
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
+    .card{
+      border-radius: 1rem !important;
+    }
+    p{
+      font-weight: normal;
+      color: black;
+    }
   </style>
 </head>
 
@@ -70,7 +77,7 @@
   <h3 style="display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;">Kids Forum</h3>
+  text-align: center;">Forum</h3>
   <p style="display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,15 +122,15 @@
         <label>Categories</label>
 <br>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript1" value="Javascript">
   <label class="form-check-label" for="inlineRadio1">Javascript</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp1" value="Lesson Help">
   <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random1" value="Random">
   <label class="form-check-label" for="inlineRadio3">Random</label>
 </div>
         <br>
@@ -146,15 +153,15 @@
         <label>Categories</label>
 <br>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="javascript2" value="Javascript">
   <label class="form-check-label" for="inlineRadio1">Javascript</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="lessonhelp2" value="Lesson Help">
   <label class="form-check-label" for="inlineRadio2">Lesson Help</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="random2" value="Random">
   <label class="form-check-label" for="inlineRadio3">Random</label>
 </div>
         <br>
@@ -175,9 +182,9 @@
   <!-- Modal -->
 
   <div class="modal fade" id="postDetailModal" tabindex="-1" role="dialog" aria-labelledby="postDetailModalTitle"
-    aria-hidden="true" style="z-index: 9999;>
-    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
+    aria-hidden="true" style="z-index: 9999;" >
+    <div  class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+      <div class="modal-content" style="border-radius: 1rem !important;">
         <div class="modal-header">
           <h5 class="modal-title" id="postDetailModalTitle">Post Title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -266,6 +273,69 @@
 
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
+
+// firebase.initializeApp(firebaseConfig);
+//   const auth = firebase.auth();
+  const db = firebase.firestore();
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user.uid);
+      let role = "Student";
+
+      async function getData() {
+        var user = firebase.auth().currentUser;
+        var userID = user.uid;
+        var docRef = db.collection("user-data").doc(userID);
+        var doc = await docRef.get();
+        if (doc.exists) {
+          role = doc.data().role;
+          console.log(role);
+
+          // document.getElementById("studentNav").style.display = "none";
+          // document.getElementById("teachersNav").style.display = "none";
+
+          console.log(role);
+
+          if (role == "Demo") {
+            console.log('Demo');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+          else if (role == "Teacher") {
+            console.log('teacher');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "block";
+            document.getElementById('link').href = 'teachers.html';
+            document.getElementById('link').innerHTML = "Teacher Page";
+          }
+          else {
+            console.log('student');
+            document.getElementById("studentNav").style.display = "block";
+            document.getElementById("teachersNav").style.display = "none";
+            document.getElementById('link').href = 'progression.html';
+            document.getElementById('link').innerHTML = "Student Page";
+          }
+        }
+      }
+      getData();
+      console.log(document.body.style.display);
+      document.body.style.display = "block";
+      console.log(document.body.style.display);
+      document.getElementById("account").href = "loggedin.html";
+      document.getElementById("account").innerHTML = '<span>My Account</span>';
+
+    } else {
+      console.log("logged out");
+      // });
+
+      document.getElementById("studentNav").style.display = "none";
+      document.getElementById("teachersNav").style.display = "none";
+    }
+  });
+
+  
 </script>
 
 <script type="text/javascript">
@@ -352,13 +422,48 @@
       console.log(postid);
       firebase.firestore().collection("posts").doc(postid).delete()
         .then(function () {
+          deleteComments(postid);
           console.log("Document successfully deleted!");
           document.getElementById('posts').innerHTML = "";
           getPosts();
         }).catch(function (error) {
           console.error("Error removing document: ", error);
         })
-    };
+    }
+
+    // function deleteComments(postid){
+    //   console.log(postid);
+    //   firebase.firestore().collection("comments").doc(postid).delete()
+    //     .then(function () {
+    //       console.log("Document successfully deleted!");
+    //       // document.getElementById('posts').innerHTML = "";
+    //       // getPosts();
+    //     }).catch(function (error) {
+    //       console.error("Error removing document: ", error);
+    //     })
+    // }
+
+  async function deleteComments(postid) {
+    let db = firebase.firestore();
+  console.log("delete comments from deleted post");
+    // let user = firebase.auth().currentUser;
+    const querySnapshot = await firebase.firestore()
+        .collectionGroup('comments')
+        .get()
+
+      if (!querySnapshot.empty) {
+        console.log("not empty");
+        for (let doc of querySnapshot.docs) {
+          if(doc.data().postid == postid){
+            db.collection("comments").doc(doc.id).delete();
+            // db.collection("comments").doc(doc.id).delete();
+            // doc.update({email: user.email});
+            // doc.update({user: user.displayName});
+            console.log("comment deleted");
+          }
+        }
+      } 
+}
 
 
 
@@ -403,12 +508,13 @@
           let email = doc.data().email;
           let content = doc.data().content;
           let imageurl = doc.data().imageurl;
+          let category = doc.data().category;
           let deleteButtonHTML = ``;
 
           if (firebase.auth().currentUser) {
             if (firebase.auth().currentUser.uid == doc.data().uid) {
               console.log("match");
-              deleteButtonHTML = `<button type="button" class="btn btn-danger delete" data-docid=${docid}>Delete Post</button>`;
+              deleteButtonHTML = `<button type="button" class="btn btn-danger delete" data-docid=${docid}>Delete</button>`;
             }
             console.log(firebase.auth().currentUser.uid, doc.data().uid);
             console.log(deleteButtonHTML);
@@ -421,11 +527,13 @@
     <div class="card" style="width: 60%; margin-left: 20%;" id="${docid}" data-uid="${uid}" data-docid="${docid}">
       <div class="card-body">
         <h5 class="card-title">${title}</h5>
+        <small class="text-muted">${category}</small>
+        <br>
         <small class="text-muted">${user} - ${email}</small>
         <p class="card-text">${content}</p>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
-        <button type="button" class="btn btn-primary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
+        <button type="button" class="btn btn-secondary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
         ${deleteButtonHTML}
         <br>
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
@@ -446,11 +554,14 @@
         <img class="card-img-top" style="max-height: 10%; width: auto; margin-left: 25%; margin-right: 25%;" src="${imageurl}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">${title}</h5>
+            <small class="text-muted">${category}</small>
+            <br>
             <small class="text-muted">${user} - ${email}</small>
           <br>
           <br>
         <hr>
         <button type="button" class="btn btn-primary openmodal" id="${docid}">Comments</button>
+         <button type="button" class="btn btn-primary share" onclick="navigator.clipboard.writeText('https://cssi-main.xavim1.repl.co/forum.html?postid=${docid}');">Share</button>
         
         ${deleteButtonHTML}
         <p class="card-text"><small class="text-muted">${timediff}</small></p>
@@ -495,16 +606,18 @@
         
           var url = new URL(window.location.href);
     var postidparam = url.searchParams.get("postid");
-    if(postidparam.length > 5) {
+    if(postidparam != null && postidparam.length > 5) {
+      console.log(postidparam);
         setModal(postidparam);
-      
-    }
-        el = document.getElementById('open');
+         el = document.getElementById('open');
 if (el.onclick) {
    el.onclick();
 } else if (el.click) {
    el.click();
 }
+      
+    }
+       
         
 
 
@@ -537,6 +650,8 @@ if (el.onclick) {
       console.log(user.email);
       let uid = user.uid;
       let time = Date.now();
+      let category = document.querySelector('input[name="inlineRadioOptions"]:checked').value;
+      console.log(category);
       firebase.firestore().collection('posts').doc(time + "." + uid).set({
         user: username,
         email: useremail,
@@ -545,7 +660,8 @@ if (el.onclick) {
         content: content,
         imageurl: imageurl,
         upvotes: 0,
-        timestamp: time
+        timestamp: time,
+        category: category
       }).then(function () {
         console.log("post added!")
         getPosts();
@@ -657,7 +773,17 @@ if (el.onclick) {
       }
     }
 
-
+function deleteComment(docid, post) {
+      console.log(docid);
+      firebase.firestore().collection("comments").doc(docid).delete()
+        .then(function () {
+          console.log("Document successfully deleted!");
+          document.getElementById('postDetailModalComments').innerHTML = "";
+          getComments(post);
+        }).catch(function (error) {
+          console.error("Error removing document: ", error);
+        })
+    }
 
     //comment mechanics    
     getComments = async (post) => {
@@ -674,6 +800,20 @@ if (el.onclick) {
           console.log(doc.data().user + " " + doc.data().uid + " " + doc.data().email);
           console.log(doc.data().content);
           console.log(doc.data().postid);
+
+
+          let deleteButtonComHTML = ``;
+
+          if (firebase.auth().currentUser) {
+            if (firebase.auth().currentUser.uid == doc.data().uid) {
+              console.log("match");
+              deleteButtonComHTML = `<button type="button" class="btn btn-danger deleteCom" data-docid=${doc.id}>Delete</button>`;
+            }
+            console.log(firebase.auth().currentUser.uid, doc.data().uid);
+            console.log(deleteButtonComHTML);
+          }
+
+          
           // console.log(doc.data().timestamp);
           console.log(doc.data().upvotes);
           let commentContact = doc.data().user + " - " + doc.data().email;
@@ -682,12 +822,26 @@ if (el.onclick) {
           let commentXML = `<div>
             <small>${commentContact}</small>
             <p> ${commentContent} </p>
+            ${deleteButtonComHTML}
           </div>`;
           console.log(commentXML);
           var d2 = document.getElementById('postDetailModalComments');
           d2.insertAdjacentHTML('afterbegin', commentXML);
 
         }// return posts;
+
+        let deleteButtonsCom = document.getElementsByClassName('deleteCom');
+        console.log(deleteButtonsCom.length);
+        for (let i = 0; i < deleteButtonsCom.length; i++) {
+          deleteButtonsCom[i].addEventListener('click', (e) => {
+            //get data-docid from button
+            let docidv = e.target.dataset.docid;
+            console.log(docidv + "");
+            // slice(0, -2);
+            //delete post
+            deleteComment(docidv, post);
+          });
+        }
 
       }
       else {

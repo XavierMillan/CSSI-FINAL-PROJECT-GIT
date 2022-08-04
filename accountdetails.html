@@ -245,6 +245,7 @@ firebase.initializeApp(firebaseConfig);
 </script>
 
 <script>
+  var db = firebase.firestore();
     firebase.auth().onAuthStateChanged(function(user) {
         if(user) {
             console.log("signed in");
@@ -299,14 +300,17 @@ firebase.initializeApp(firebaseConfig);
             //get user
             var user = firebase.auth().currentUser;
             //if name is less then 4 characters
-            if(name.length < 4) {
-                document.getElementById("message").innerHTML = "Name must be at least 4 characters";
+            if(name.length < 3) {
+                document.getElementById("message").innerHTML = "Name must be at least 3 characters";
             }
             else {
                 //change name
                 user.updateProfile({
                     displayName: name
                 }).then(function() {
+                    db.collection("user-data").doc(user.uid).update({name: user.displayName});
+                  updatePostContact();
+                  updateCommentContact();
                     console.log("name changed");
                     document.getElementById("message").innerHTML = "Name changed";
                     document.getElementById("currentname").innerHTML = name;
@@ -330,6 +334,9 @@ firebase.initializeApp(firebaseConfig);
                 //change email
                 user.updateEmail(email).then(function () {
                     //update email
+                  db.collection("user-data").doc(user.uid).update({email: user.email});
+                  updatePostContact();
+                  updateCommentContact();
                     document.getElementById("currentemail").innerHTML = user.email;
                     document.getElementById("message").innerHTML = "Email changed successfully";
                 }).catch(function (error) {
@@ -434,7 +441,50 @@ firebase.initializeApp(firebaseConfig);
             }
             */
         });
-        //search for user name in database and get their id and email
+       
+async function updatePostContact() {
+  console.log("updatePostContact");
+    let user = firebase.auth().currentUser;
+    const querySnapshot = await firebase.firestore()
+        .collectionGroup('posts')
+        .get()
+
+      if (!querySnapshot.empty) {
+        console.log("not empty");
+        for (let doc of querySnapshot.docs) {
+          if(doc.data().uid == user.uid){
+            db.collection("posts").doc(doc.id).update({email: user.email});
+            db.collection("posts").doc(doc.id).update({user: user.displayName});
+            // doc.update({email: user.email});
+            // doc.update({user: user.displayName});
+            console.log("post updated");
+          }
+        }
+      } 
+}
+
+  async function updateCommentContact() {
+  console.log("updateCommentContact");
+    let user = firebase.auth().currentUser;
+    const querySnapshot = await firebase.firestore()
+        .collectionGroup('comments')
+        .get()
+
+      if (!querySnapshot.empty) {
+        console.log("not empty");
+        for (let doc of querySnapshot.docs) {
+          if(doc.data().uid == user.uid){
+            db.collection("comments").doc(doc.id).update({email: user.email});
+            db.collection("comments").doc(doc.id).update({user: user.displayName});
+            // doc.update({email: user.email});
+            // doc.update({user: user.displayName});
+            console.log("comment updated");
+          }
+        }
+      } 
+}
+  
+  //search for user name in database and get their id and email
         // function searchUser(name){
         //     var uid = "";
         //     var email = "";

@@ -43,12 +43,20 @@ html, body {
     text-align: center;
     background-color: black;
     background-image: radial-gradient(
-    rgba(0, 0, 200, 0.75), black 120%
+    rgba(0, 0, 200, 0.75), black 120% 
   );
     text-shadow: 0 0 5px #C8C8C8;
    width: 800px;
   height: 550px;
   border-radius: 20px;
+  border: 0.2rem solid #0f1bc2;
+/*   padding: 0.4em; */
+  box-shadow: 0 0 .2rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #849bf5,
+            0 0 0.8rem #bc13fe,
+            0 0 2.8rem #ff85af,
+            inset 0 0 1.3rem #ff1438; 
    padding: 25px;
    margin: 25px;
 /*    justify-content:center; */
@@ -128,13 +136,23 @@ html, body {
     margin-left: 30px;
     margin-top: 5px;
 }
- 
+ .floating2 { 
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
 @keyframes floating {
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 15px); }
     100%   { transform: translate(0, -0px); }   
 }
-
+@keyframes floating2 {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
 .triviaButs{
   margin:auto;
  display:flex;
@@ -153,8 +171,19 @@ html, body {
 #leaderboard{
   display:flex;
   flex-direction: column;
+  justify-content: center;
 /*   text-align:center; */
-  width:50%;
+  width:48%;
+  height:650px;
+   border: 0.2rem solid #e8bae9;
+  border-radius: 2rem;
+  padding: 0.4em;
+  box-shadow: 0 0 .2rem #8f79dc,
+            0 0 .2rem #c690d0,
+            0 0 2rem #1430ff,
+            0 0 0.8rem #1486ff,
+            0 0 2.8rem #14efff,
+            inset 0 0 1.3rem #ff145b; 
 }
 #secondBody{
   width:100%;
@@ -164,6 +193,7 @@ html, body {
   display:flex;
   align-self:center;
   font-size: 4.2rem;
+  margin-top:-5%;
   animation: pulsate 1.5s infinite alternate;  
   border: 0.2rem solid #fff;
   border-radius: 2rem;
@@ -179,7 +209,21 @@ html, body {
   
 }
 .l {
-  margin-left:30%;
+  margin-left:10%;
+  font-family: 'Roboto Mono', monospace;
+  font-size:35px;
+  margin-bottom:20px;
+
+  color: #ffffff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 30px #bc13fe,
+    0 0 60px #bc13fe,
+    0 0 70px #bc13fe,
+    0 0 80px #bc13fe,
+    0 0 100px #bc13fe;
 }
 
 .neonText {
@@ -195,5 +239,5 @@ html, body {
     0 0 151px #bc13fe;
 }
 #score0{
-  margin-top:5%;
+  margin-top:10%;
 }
