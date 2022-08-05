@@ -274,7 +274,7 @@ function addDocument(){
                 level: level
             }).then(function(){
                 //document added
-               alert("document added");
+               // alert("document added");
             }).catch(function(error){
                 //error
                 console.log(error);
